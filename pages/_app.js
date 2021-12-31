@@ -4,6 +4,7 @@ import { wrapper } from "../services/redux/store";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
+  const getLayout = Component.getLayout || ((page) => page);
   return (
     // <Provider store={store}>
     <SWRConfig
@@ -13,7 +14,7 @@ function MyApp({ Component, pageProps }) {
           instanceHost.get(resource, init).then((res) => res.data),
       }}
     >
-      <Component {...pageProps} />
+      {getLayout(<Component {...pageProps} />)}
     </SWRConfig>
     // </Provider>
   );
