@@ -8,7 +8,7 @@ const OnboardingReview = ({ pageData, userData }) => {
   return (
     <Onboarding
       page={3}
-      imageUrl="https://res.cloudinary.com/dkceblkn7/image/upload/v1638143504/boho-vendor-assets/Group_319_jln1la.svg"
+      imageUrl="https://res.cloudinary.com/dkceblkn7/image/upload/v1640914799/boho%20vendor%20assets/Group_442_urqw5i.svg"
       imageAlt="picture of looking at data"
       linkForward="/walkthrough/about-you"
       pageData={pageData ? pageData[0] : null}
