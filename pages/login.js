@@ -12,6 +12,7 @@ import { clientCookieSet } from "../services/cookies";
 import { useRouter } from "next/router";
 
 const Login = ({ pageData }) => {
+  console.log(process.env.NEXT_PUBLIC_BASE_CMS);
   const [error, setError] = useState();
   const [visible, setVisible] = useState(false);
 

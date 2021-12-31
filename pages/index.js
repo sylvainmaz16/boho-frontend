@@ -5,6 +5,7 @@ import fetchWrapper from "../services/useFetch";
 import { pageFilter } from "../services/cms/pages";
 
 const LandingPage = ({ pageData }) => {
+  console.log(process.env.NEXT_PUBLIC_BASE_CMS);
   return (
     <>
       <LandingHeader />
