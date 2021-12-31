@@ -52,9 +52,9 @@ p {
 }
 
 .wrapper-form-landing {
-  max-width: 496px;
-  width: 100%;
+  width: 50%;
   box-sizing: border-box;
+  position: relative;
 }
 
 .inputLabel {
