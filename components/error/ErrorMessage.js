@@ -7,8 +7,10 @@ const ErrorMessage = ({ content, visible, setVisible }) => {
         <p className="error__headerContent">An error has occured!</p>
         <img
           onClick={() => setVisible(false)}
-          src="https://res.cloudinary.com/dkceblkn7/image/upload/v1638014101/boho-vendor-assets/Group_377_o4xiox.svg"
+          src="https://res.cloudinary.com/dkceblkn7/image/upload/v1640912221/boho%20vendor%20assets/Group_377_1_qqzsjs.svg"
           alt="close the error message"
+          height="18"
+          width="18"
         />
       </div>
       <div className="error__content">

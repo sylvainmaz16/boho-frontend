@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const GoogleButton = ({ renderProps, content }) => {
   return (
     <button
@@ -8,9 +10,11 @@ const GoogleButton = ({ renderProps, content }) => {
       disabled={renderProps?.disabled}
       className="button__google"
     >
-      <img
-        src="https://res.cloudinary.com/dkceblkn7/image/upload/v1638004998/boho-vendor-assets/Group_3_sd9skk.svg"
+      <Image
+        src="https://res.cloudinary.com/dkceblkn7/image/upload/v1640912119/boho%20vendor%20assets/Group_286_myqs2l.svg"
         alt="Google's G Logo"
+        width="20"
+        height="20"
       />
       <p>{content}</p>
     </button>
