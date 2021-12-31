@@ -26,7 +26,7 @@ const Migrate = ({ pageData }) => {
 
 export async function getStaticProps() {
   const pageStatus = await fetchWrapper(
-    "http://localhost:5050",
+    process.env.NEXT_PUBLIC_BASE_CMS,
     "",
     "GET",
     null,

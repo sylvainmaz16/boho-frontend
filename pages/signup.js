@@ -27,7 +27,7 @@ const Signup = ({ pageData }) => {
     };
 
     const responseAPI = await fetchWrapper(
-      "http://localhost:5050",
+      process.env.NEXT_PUBLIC_BASE_CMS,
       "/api/login/google",
       "POST",
       null,
@@ -97,7 +97,7 @@ const Signup = ({ pageData }) => {
 
 export async function getStaticProps() {
   const pageStatus = await fetchWrapper(
-    "http://localhost:5050",
+    process.env.NEXT_PUBLIC_BASE_CMS,
     "",
     "GET",
     null,

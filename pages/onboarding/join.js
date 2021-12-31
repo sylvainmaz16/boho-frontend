@@ -21,7 +21,7 @@ export async function getServerSideProps({ req, res }) {
   const user = serverCookieGet(req, res);
 
   const pageStatus = await fetchWrapper(
-    "http://localhost:5050",
+    process.env.NEXT_PUBLIC_BASE_CMS,
     "",
     "GET",
     user,
@@ -40,7 +40,7 @@ export async function getServerSideProps({ req, res }) {
   }
 
   const userStatus = await fetchWrapper(
-    "http://localhost:5050",
+    process.env.NEXT_PUBLIC_BASE_CMS,
     "/api/user/onboarding",
     "GET",
     user,
