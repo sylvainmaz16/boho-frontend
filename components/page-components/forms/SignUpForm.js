@@ -79,7 +79,7 @@ const SignupForm = ({ setError, setVisible }) => {
         setValue={setFirstName}
         type="text"
         imageAlt="person icon"
-        imageURL="https://res.cloudinary.com/dkceblkn7/image/upload/v1638001586/boho-vendor-assets/Group_284_ye9oas.svg"
+        imageURL="https://res.cloudinary.com/dkceblkn7/image/upload/v1640912485/boho%20vendor%20assets/Group_284_1_n3b6wa.svg"
         htmlFor="first_name"
         placeholder="First name"
         pattern={new RegExp(/^.*/i)}
@@ -90,7 +90,7 @@ const SignupForm = ({ setError, setVisible }) => {
         setValue={setLastName}
         type="text"
         imageAlt="person icon"
-        imageURL="https://res.cloudinary.com/dkceblkn7/image/upload/v1638001586/boho-vendor-assets/Group_284_ye9oas.svg"
+        imageURL="https://res.cloudinary.com/dkceblkn7/image/upload/v1640912485/boho%20vendor%20assets/Group_284_1_n3b6wa.svg"
         htmlFor="last_name"
         placeholder="Last name"
         pattern={new RegExp(/^.*/i)}
@@ -101,7 +101,7 @@ const SignupForm = ({ setError, setVisible }) => {
         setValue={setPhone}
         type="tel"
         imageAlt="phone icon"
-        imageURL="https://res.cloudinary.com/dkceblkn7/image/upload/v1638001736/boho-vendor-assets/Group_2_zu19fn.svg"
+        imageURL="https://res.cloudinary.com/dkceblkn7/image/upload/v1640912519/boho%20vendor%20assets/Vector_4_aozhvk.svg"
         htmlFor="phone"
         placeholder="123-123-1234"
         pattern={new RegExp(/^\(?\d{3}\)?-? *\d{3}-? *-?\d{4}/i)}
@@ -112,7 +112,7 @@ const SignupForm = ({ setError, setVisible }) => {
         setValue={setEmail}
         type="text"
         imageAlt="mail icon"
-        imageURL="https://res.cloudinary.com/dkceblkn7/image/upload/v1638001610/boho-vendor-assets/001-email_taz2v9.svg"
+        imageURL="https://res.cloudinary.com/dkceblkn7/image/upload/v1639793400/boho%20vendor%20assets/001-email_1_lu1lam.svg"
         htmlFor="email"
         placeholder="Email"
         pattern={new RegExp(/^\S+@\S+$/i)}
@@ -123,7 +123,7 @@ const SignupForm = ({ setError, setVisible }) => {
         setValue={setPassword1}
         type="password"
         imageAlt="lock icon"
-        imageURL="https://res.cloudinary.com/dkceblkn7/image/upload/v1638001716/boho-vendor-assets/Lock_povifq.svg"
+        imageURL="https://res.cloudinary.com/dkceblkn7/image/upload/v1640912347/boho%20vendor%20assets/Lock_1_bb2g7m.svg"
         htmlFor="password1"
         placeholder="Password"
         pattern={
@@ -138,7 +138,7 @@ const SignupForm = ({ setError, setVisible }) => {
         setValue={setPassword2}
         type="password"
         imageAlt="lock icon"
-        imageURL="https://res.cloudinary.com/dkceblkn7/image/upload/v1638001716/boho-vendor-assets/Lock_povifq.svg"
+        imageURL="https://res.cloudinary.com/dkceblkn7/image/upload/v1640912347/boho%20vendor%20assets/Lock_1_bb2g7m.svg"
         htmlFor="password2"
         placeholder="Confirm Password"
         pattern={

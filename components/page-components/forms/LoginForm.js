@@ -59,7 +59,7 @@ const LoginForm = ({ setError, setVisible }) => {
         setValue={setEmail}
         type="text"
         imageAlt="mail icon"
-        imageURL="https://res.cloudinary.com/dkceblkn7/image/upload/v1638001610/boho-vendor-assets/001-email_taz2v9.svg"
+        imageURL="https://res.cloudinary.com/dkceblkn7/image/upload/v1639793400/boho%20vendor%20assets/001-email_1_lu1lam.svg"
         htmlFor="email"
         placeholder="Email"
         pattern={new RegExp(/^\S+@\S+$/i)}
@@ -70,7 +70,7 @@ const LoginForm = ({ setError, setVisible }) => {
         setValue={setPassword}
         type="password"
         imageAlt="lock icon"
-        imageURL="https://res.cloudinary.com/dkceblkn7/image/upload/v1638001716/boho-vendor-assets/Lock_povifq.svg"
+        imageURL="https://res.cloudinary.com/dkceblkn7/image/upload/v1640912347/boho%20vendor%20assets/Lock_1_bb2g7m.svg"
         htmlFor="password1"
         placeholder="Password"
         pattern={new RegExp(/^.*/i)}

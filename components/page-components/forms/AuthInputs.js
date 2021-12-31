@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const AuthInputs = ({
   label,
   value,
@@ -15,7 +17,7 @@ const AuthInputs = ({
         {label}
       </label>
       <div className="auth__inputIcon">
-        <img src={imageURL} alt={imageAlt} />
+        <Image src={imageURL} alt={imageAlt} height="24" width="24" />
       </div>
       <input
         className="auth__input input"

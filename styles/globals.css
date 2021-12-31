@@ -327,7 +327,7 @@ p {
   margin-bottom: 24px;
   background-color: transparent;
   display: flex;
-  max-width: 320px;
+  max-width: 250px;
   width: 100%;
   justify-content: space-around;
   align-items: center;
