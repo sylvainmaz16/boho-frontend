@@ -12,7 +12,6 @@ import { clientCookieSet } from "../services/cookies";
 import { useRouter } from "next/router";
 
 const Signup = ({ pageData }) => {
-  console.log(process.env.NEXT_PUBLIC_BASE_CMS);
   const [error, setError] = useState();
   const [visible, setVisible] = useState(false);
 
@@ -55,11 +54,6 @@ const Signup = ({ pageData }) => {
     }
   };
 
-  const negativeResponseGoogle = () => {
-    setError("Oops, something went wrong");
-    setVisible(true);
-  };
-
   return (
     <div className="auth container">
       <div className="wrapper-form">
@@ -74,7 +68,6 @@ const Signup = ({ pageData }) => {
           )}
           buttonText="Login"
           onSuccess={positiveResponseGoogle}
-          onFailure={negativeResponseGoogle}
           cookiePolicy={"single_host_origin"}
         />
         <AuthDivider />

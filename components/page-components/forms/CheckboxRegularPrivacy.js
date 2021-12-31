@@ -4,7 +4,7 @@ import Image from "next/image";
 const CheckboxRegular = ({ value, setValue, htmlFor, required = false }) => {
   return (
     <div className="checkbox__regularContainer">
-      <label className="checkbox__regularLabel">
+      <label className="checkbox__regularLabel checkbox__privacy">
         {value ? (
           <Image
             src="https://res.cloudinary.com/dkceblkn7/image/upload/v1640912659/boho%20vendor%20assets/Group_157_ajnkod.svg"
