@@ -4,6 +4,7 @@ import Content from "./Content";
 import CircleLink from "./CircleLinks";
 import BrownButton from "../../buttons/BrownButton";
 import GreyButton from "../../buttons/GreyButton";
+import Image from "next/image";
 
 const Onboarding = ({
   page,
@@ -18,22 +19,15 @@ const Onboarding = ({
     <div className="onboarding container">
       <div className="wrapper-form">
         <div className="onboarding__header">
-          <img
-            src="https://res.cloudinary.com/dkceblkn7/image/upload/v1638073911/boho-vendor-assets/image_1_p7c2hr.svg"
+          <Image
+            src="https://res.cloudinary.com/dkceblkn7/image/upload/v1640914159/boho%20vendor%20assets/image_1_1_i9o3e4.svg"
             alt="Boho Market Logo"
+            height="64"
+            width="235.29"
           />
         </div>
         <div className="onboarding__mainImage">
-          <img
-            className="onboarding__mainForeground"
-            src={imageUrl}
-            alt={imageAlt}
-          />
-          <img
-            className="onboarding__mainBackground"
-            src="https://res.cloudinary.com/dkceblkn7/image/upload/v1638074240/boho-vendor-assets/Rectangle_41_f6bvpo.svg"
-            alt=""
-          />
+          <Image src={imageUrl} alt={imageAlt} width="280" height="280" />
         </div>
 
         {userData?.legacy === true && (

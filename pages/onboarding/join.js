@@ -8,7 +8,7 @@ const OnboardingJoin = ({ pageData, userData }) => {
   return (
     <Onboarding
       page={2}
-      imageUrl="https://res.cloudinary.com/dkceblkn7/image/upload/v1638143328/boho-vendor-assets/Group_317_oefq1z.svg"
+      imageUrl="https://res.cloudinary.com/dkceblkn7/image/upload/v1640914749/boho%20vendor%20assets/Group_443_eor1kt.svg"
       imageAlt="picture of looking at data"
       linkForward="/onboarding/review"
       pageData={pageData ? pageData[0] : null}
