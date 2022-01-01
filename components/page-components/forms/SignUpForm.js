@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AuthInputs from "./AuthInputs";
+import AuthInputs from "./components/AuthInputs";
 import CheckboxRegular from "./CheckboxRegular";
 import CheckboxRegularPrivacy from "./CheckboxRegularPrivacy";
 import BrownSubmit from "../../buttons/BrownSubmit";
