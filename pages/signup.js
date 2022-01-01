@@ -87,26 +87,26 @@ const Signup = ({ pageData }) => {
   );
 };
 
-// export async function getStaticProps() {
-//   const pageStatus = await fetchWrapper(
-//     process.env.NEXT_PUBLIC_BASE_CMS,
-//     "",
-//     "GET",
-//     null,
-//     false,
-//     null,
-//     "pages.AuthPage"
-//   );
+export async function getStaticProps() {
+  const pageStatus = await fetchWrapper(
+    process.env.NEXT_PUBLIC_BASE_CMS,
+    "",
+    "GET",
+    null,
+    false,
+    null,
+    "pages.AuthPage"
+  );
 
-//   let pageData;
-//   if (pageStatus.returnData.status === 200) {
-//     const pageTemp = await pageStatus.returnData.json();
-//     pageData = await pageFilter(pageTemp, "signup");
-//   }
+  let pageData;
+  if (pageStatus.returnData.status === 200) {
+    const pageTemp = await pageStatus.returnData.json();
+    pageData = await pageFilter(pageTemp, "signup");
+  }
 
-//   return {
-//     props: { pageData: pageData || null },
-//   };
-// }
+  return {
+    props: { pageData: pageData || null },
+  };
+}
 
 export default Signup;
