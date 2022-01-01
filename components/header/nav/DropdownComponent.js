@@ -1,5 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
+import DropdownLink from "./DropdownLink";
+import DropdownLogout from "./DropdownLogout";
 
 const DropdownComponent = ({ onClick }) => {
   return (
@@ -11,7 +12,12 @@ const DropdownComponent = ({ onClick }) => {
           height="20px"
         />
       </div>
-      <div className="dropdown__container"></div>
+      <div className="dropdown__container">
+        <DropdownLink content="Your Events" link="" />
+        <DropdownLink content="Your Messages" link="" />
+        <DropdownLink content="Your Payments" link="" />
+        <DropdownLogout />
+      </div>
     </div>
   );
 };
