@@ -90,25 +90,25 @@ const Login = ({ pageData }) => {
   );
 };
 
-export async function getStaticProps() {
-  const pageStatus = await fetchWrapper(
-    process.env.NEXT_PUBLIC_BASE_CMS,
-    "",
-    "GET",
-    null,
-    false,
-    null,
-    "pages.AuthPage"
-  );
+// export async function getStaticProps() {
+//   const pageStatus = await fetchWrapper(
+//     process.env.NEXT_PUBLIC_BASE_CMS,
+//     "",
+//     "GET",
+//     null,
+//     false,
+//     null,
+//     "pages.AuthPage"
+//   );
 
-  let pageData;
-  if (pageStatus.returnData.status === 200) {
-    const pageTemp = await pageStatus.returnData.json();
-    pageData = await pageFilter(pageTemp, "login");
-  }
-  return {
-    props: { pageData: pageData || null },
-  };
-}
+//   let pageData;
+//   if (pageStatus.returnData.status === 200) {
+//     const pageTemp = await pageStatus.returnData.json();
+//     pageData = await pageFilter(pageTemp, "login");
+//   }
+//   return {
+//     props: { pageData: pageData || null },
+//   };
+// }
 
 export default Login;

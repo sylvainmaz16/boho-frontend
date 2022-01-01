@@ -19,26 +19,26 @@ const LandingPage = ({ pageData }) => {
   );
 };
 
-export async function getStaticProps() {
-  const pageStatus = await fetchWrapper(
-    process.env.NEXT_PUBLIC_BASE_CMS,
-    "",
-    "GET",
-    null,
-    false,
-    null,
-    "pages.LandingPage"
-  );
-  // console.log(pageStatus);
-  let pageData;
-  if (pageStatus.returnData.status === 200) {
-    const pageTemp = await pageStatus.returnData.json();
-    pageData = await pageFilter(pageTemp, "landing");
-  }
+// export async function getStaticProps() {
+//   const pageStatus = await fetchWrapper(
+//     process.env.NEXT_PUBLIC_BASE_CMS,
+//     "",
+//     "GET",
+//     null,
+//     false,
+//     null,
+//     "pages.LandingPage"
+//   );
+//   // console.log(pageStatus);
+//   let pageData;
+//   if (pageStatus.returnData.status === 200) {
+//     const pageTemp = await pageStatus.returnData.json();
+//     pageData = await pageFilter(pageTemp, "landing");
+//   }
 
-  return {
-    props: { pageData: pageData || null },
-  };
-}
+//   return {
+//     props: { pageData: pageData || null },
+//   };
+// }
 
 export default LandingPage;

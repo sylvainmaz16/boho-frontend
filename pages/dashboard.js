@@ -2,6 +2,7 @@ import MainLayout from "../components/layout/MainLayout";
 
 const Dashboard = () => {
   return null;
+  
 };
 
 export default Dashboard;
