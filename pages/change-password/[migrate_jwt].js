@@ -24,35 +24,35 @@ const Migrate = ({ pageData }) => {
   );
 };
 
-// export async function getStaticProps() {
-//   const pageStatus = await fetchWrapper(
-//     process.env.NEXT_PUBLIC_BASE_CMS,
-//     "",
-//     "GET",
-//     null,
-//     false,
-//     null,
-//     "pages.AuthPage"
-//   );
+export async function getStaticProps() {
+  const pageStatus = await fetchWrapper(
+    process.env.NEXT_PUBLIC_BASE_CMS,
+    "",
+    "GET",
+    null,
+    false,
+    null,
+    "pages.AuthPage"
+  );
 
-//   let pageData;
-//   if (pageStatus.returnData.status === 200) {
-//     const pageTemp = await pageStatus.returnData.json();
-//     pageData = await pageFilter(pageTemp, "migrate");
-//   }
+  let pageData;
+  if (pageStatus.returnData.status === 200) {
+    const pageTemp = await pageStatus.returnData.json();
+    pageData = await pageFilter(pageTemp, "migrate");
+  }
 
-//   return {
-//     props: { pageData: pageData || null },
-//   };
-// }
+  return {
+    props: { pageData: pageData || null },
+  };
+}
 
-// export async function getStaticPaths() {
-//   return {
-//     paths: [
-//       { params: { migrate_jwt: "migrate_jwt" } }, // See the "paths" section below
-//     ],
-//     fallback: true, // See the "fallback" section below
-//   };
-// }
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { migrate_jwt: "migrate_jwt" } }, // See the "paths" section below
+    ],
+    fallback: true, // See the "fallback" section below
+  };
+}
 
 export default Migrate;
