@@ -33,7 +33,7 @@ const Dashboard = () => {
       eventDetails: 'events/1',
     },
     {
-      eventImage: '',
+      eventImage: '/images/test.jpg',
       eventLocation: '22 B backer Street',
       eventTitle: 'The Hound of the Baskervilles',
       eventDates: '12th - 15th',
