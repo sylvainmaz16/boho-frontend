@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap');
 
 /* added some root styles for easy access */
@@ -65,6 +66,7 @@ h4 {
   height: var(--xl);
   width: var(--xl);
 }
+
 
 body {
   margin: 0;
@@ -718,6 +720,39 @@ p {
   margin-bottom: 12px;
   display: block;
 }
+
+.event_layout,
+.event_container,
+.event_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.event_container {
+  max-width: 800px;
+}
+
+.event_content img {
+  width: 800px;
+}
+
+.event_content h1 {
+  text-align: center;
+  color: #67605f;
+  font-weight: 900;
+  font-size: 50px;
+}
+
+.event_content > p {
+  display: flex;
+  margin-bottom: 20px;
+
+  min-height: 200px;
+  min-width: 200px;
+  justify-content: center;
+  align-items: center;
+=======
 /* // my styles for the dash board I've use some var(--key-word) from the root please lemme know if the is okay cams-??  */
 .dashboard_page {
   padding: 0 93.5px 0 93.5px;
