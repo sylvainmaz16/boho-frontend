@@ -1,4 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap');
+
+/* added some root styles for easy access */
+/* is That okay? cams-?? */
+:root {
+  --sm: 1.5rem;
+  --lg: 2.5rem;
+  --xl: 3rem;
+  --rounded: 8px;
+
+  --gray-50: #fafcfc;
+  --gray-100: #eaefef;
+  --gray-200: #e0e5e5;
+  --gray-300: #abb2b2;
+  --gray-400: #7a8080;
+  --gray-500: #2f3333;
+  --gray-600: #0d0e0e;
+
+  --accent-dark: #67605f;
+  --accent-primary: #aa4d2e;
+  --accent-3: #bc7f7c;
+  --accent-4: #ddcdc5;
+
+  --edit: #3db2ff;
+  --success: #9df2b0;
+  --error: #ff3636;
+  --error-light: #ff5555;
+  --warning: #ffb900;
+  --warning-dark: #d69b00;
+
+  --font-light: thin;
+  --font-medium: 300;
+  --font-regular: normal;
+  --font-semi: 500;
+  --font-bold: 600;
+  --font-xl: bold;
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 32px;
+}
+h2 {
+  font-size: 40px;
+}
+h3 {
+  font-size: 32px;
+}
+h4 {
+  font-size: 24px;
+}
+
+.sm {
+  height: var(--sm);
+  width: var(--sm);
+}
+
+.lg {
+  height: var(--lg);
+  width: var(--lg);
+}
+
+.xl {
+  height: var(--xl);
+  width: var(--xl);
+}
+
 
 body {
   margin: 0;
@@ -684,4 +752,75 @@ p {
   min-width: 200px;
   justify-content: center;
   align-items: center;
+=======
+/* // my styles for the dash board I've use some var(--key-word) from the root please lemme know if the is okay cams-??  */
+.dashboard_page {
+  padding: 0 93.5px 0 93.5px;
+}
+
+.progress_bar_container {
+  border: solid 1px black;
+}
+
+progress[value] {
+  -webkit-appearance: none;
+  height: 15px;
+  padding: 1px;
+  border-radius: 25px;
+  width: 300px;
+}
+
+.dashboard_head {
+  display: flex;
+  align-items: center;
+  min-height: 200px;
+  justify-content: space-around;
+  color: var(--accent-dark);
+}
+
+.dashboard_event_list {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.event_card {
+  max-width: 512px;
+  margin: 20px;
+  background-color: var(--gray-50);
+  border-radius: var(--rounded);
+  overflow: hidden;
+  font-weight: bold;
+  font-family: 'Montserrat';
+}
+
+.event_card_content {
+  padding-left: 37px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.event_card_content div {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.event_card_img {
+  width: 100%;
+  height: 208px;
+  position: relative;
+  border-radius: var(--rounded);
+}
+
+.event_card svg {
+  margin-right: 5px;
+}
+
+.event_card .event_card_img > img {
+  border-radius: var(--rounded);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

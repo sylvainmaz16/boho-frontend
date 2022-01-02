@@ -1,16 +1,16 @@
-import Onboarding from "../../components/page-components/onboarding/Onboarding";
-import fetchWrapper from "../../services/useFetch";
-import { pageFilter } from "../../services/cms/pages";
-import { serverCookieSet, serverCookieGet } from "../../services/cookies";
+import Onboarding from '../../components/page-components/onboarding/Onboarding';
+import fetchWrapper from '../../services/useFetch';
+import { pageFilter } from '../../services/cms/pages';
+import { serverCookieSet, serverCookieGet } from '../../services/cookies';
 
 const OnboardingProfile = ({ pageData, userData }) => {
   console.log(userData);
   return (
     <Onboarding
       page={1}
-      imageUrl="https://res.cloudinary.com/dkceblkn7/image/upload/v1640914362/boho%20vendor%20assets/thing_hl9hnm.svg"
-      imageAlt="picture of reviewing information"
-      linkForward="/onboarding/join"
+      imageUrl='https://res.cloudinary.com/dkceblkn7/image/upload/v1640914362/boho%20vendor%20assets/thing_hl9hnm.svg'
+      imageAlt='picture of reviewing information'
+      linkForward='/onboarding/join'
       pageData={pageData ? pageData[0] : null}
       userData={userData}
     />
