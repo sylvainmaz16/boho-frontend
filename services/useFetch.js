@@ -1,3 +1,12 @@
+// this takes a plain object and wraps it as though it's a fetch() response
+const responsify = (errData) => {
+  return {
+    json() {
+      return Promise.resolve(errData);
+    }
+  }
+};
+
 const fetchInside = async (baseURL, {
   endpoint,
   method = "GET",
@@ -60,9 +69,9 @@ const fetchInside = async (baseURL, {
   ) {
     returnData = initialResponse;
   } else if (initialResponse.status === 401 || initialResponse.status === 403) {
-    returnData = { error: "Oops, something went wrong." };
+    returnData = responsify({ error: "Oops, something went wrong." });
   } else {
-    returnData = { error: "Oops, something went wrong." };
+    returnData = responsify({ error: "Oops, something went wrong." });
   }
 
   return returnData;
@@ -138,7 +147,7 @@ const fetchWrapper = async (baseURL, {
     try {
       //   const reAuth = await fetch("http://localhost:5050/api/token/refresh/", {
       const reAuth = await fetch(
-        "http://localhost:5050/dj-rest-auth/token/refresh/",
+        "http://localhost:5000/dj-rest-auth/token/refresh/",
         {
           method: "POST",
           body: new URLSearchParams({
@@ -155,21 +164,19 @@ const fetchWrapper = async (baseURL, {
         isLoggedIn: true,
       };
 
-      returnData = await fetchInside(
-        baseURL,
+      returnData = await fetchInside(baseURL, {
         endpoint,
         method,
         headers,
         data,
-        pageType,
-        token.access
-      );
+        pageType
+      });
     } catch (err) {
       console.log(err);
-      returnData = { error: "Error refreshing token" };
+      returnData = responsify({ error: "Error refreshing token" });
     }
   } else {
-    returnData = { error: "Unknown reponse code" };
+    returnData = responsify({ error: "Unknown reponse code" });
   }
 
   return { returnData, tokenAuth };
