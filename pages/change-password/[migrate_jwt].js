@@ -25,15 +25,9 @@ const Migrate = ({ pageData }) => {
 };
 
 export async function getStaticProps() {
-  const pageStatus = await fetchWrapper(
-    process.env.NEXT_PUBLIC_BASE_CMS,
-    "",
-    "GET",
-    null,
-    false,
-    null,
-    "pages.AuthPage"
-  );
+  const pageStatus = await fetchWrapper(process.env.NEXT_PUBLIC_BASE_CMS, {
+    pageType: "pages.AuthPage"
+  });
 
   let pageData;
   if (pageStatus.returnData.status === 200) {

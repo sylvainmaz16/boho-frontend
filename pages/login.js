@@ -26,15 +26,11 @@ const Login = ({ pageData }) => {
       last_name: response?.profileObj?.familyName,
     };
 
-    const responseAPI = await fetchWrapper(
-      process.env.NEXT_PUBLIC_BASE_CMS,
-      "/api/login/google",
-      "POST",
-      null,
-      false,
-      data,
-      null
-    );
+    const responseAPI = await fetchWrapper(process.env.NEXT_PUBLIC_BASE_CMS, {
+      endpoint: "/api/login/google",
+      method: "POST",
+      data
+    });
 
     console.log(response);
 
@@ -91,15 +87,9 @@ const Login = ({ pageData }) => {
 };
 
 export async function getStaticProps() {
-  const pageStatus = await fetchWrapper(
-    process.env.NEXT_PUBLIC_BASE_CMS,
-    "",
-    "GET",
-    null,
-    false,
-    null,
-    "pages.AuthPage"
-  );
+  const pageStatus = await fetchWrapper(process.env.NEXT_PUBLIC_BASE_CMS, {
+    pageType: "pages.AuthPage"
+  });
 
   let pageData;
   if (pageStatus.returnData.status === 200) {

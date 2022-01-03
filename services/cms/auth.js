@@ -1,28 +1,20 @@
 import fetchWrapper from "../useFetch";
 
 export const signup = (data) => {
-  const response = fetchWrapper(
-    process.env.NEXT_PUBLIC_BASE_CMS,
-    "/dj-rest-auth/registration/",
-    "POST",
-    null,
-    false,
-    data,
-    null
-  ).catch(err => console.error(err));
+  const response = fetchWrapper(process.env.NEXT_PUBLIC_BASE_CMS, {
+    endpoint: "/dj-rest-auth/registration/",
+    method: "POST",
+    data
+  }).catch(err => console.error(err));
   return response;
 };
 
 export const login = (data) => {
-  const response = fetchWrapper(
-    process.env.NEXT_PUBLIC_BASE_CMS,
-    "/api/login",
-    "POST",
-    null,
-    false,
-    data,
-    null
-  );
+  const response = fetchWrapper(process.env.NEXT_PUBLIC_BASE_CMS, {
+    endpoint: "/api/login",
+    method: "POST",
+    data
+  });
   return response;
 };
 

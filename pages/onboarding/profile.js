@@ -20,15 +20,10 @@ const OnboardingProfile = ({ pageData, userData }) => {
 export async function getServerSideProps({ req, res }) {
   const user = serverCookieGet(req, res);
 
-  const pageStatus = await fetchWrapper(
-    process.env.NEXT_PUBLIC_BASE_CMS,
-    "",
-    "GET",
+  const pageStatus = await fetchWrapper(process.env.NEXT_PUBLIC_BASE_CMS, {
     user,
-    true,
-    null,
-    "pages.OnboardingPage"
-  );
+    pageType: "pages.OnboardingPage"
+  });
 
   let pageData;
   if (pageStatus.tokenAuth) {
@@ -39,15 +34,10 @@ export async function getServerSideProps({ req, res }) {
     pageData = await pageFilter(pageTemp, "onboarding p1profile");
   }
 
-  const userStatus = await fetchWrapper(
-    process.env.NEXT_PUBLIC_BASE_CMS,
-    "/api/user/onboarding",
-    "GET",
-    user,
-    true,
-    null,
-    null
-  );
+  const userStatus = await fetchWrapper(process.env.NEXT_PUBLIC_BASE_CMS, {
+    endpoint: "/api/user/onboarding",
+    user
+  });
 
   if (userStatus.tokenAuth) {
     serverCookieSet(req, res, userStatus.tokenAuth);
