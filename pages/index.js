@@ -21,13 +21,8 @@ const LandingPage = ({ pageData }) => {
 
 export async function getStaticProps() {
   const pageStatus = await fetchWrapper(process.env.NEXT_PUBLIC_BASE_CMS, {
-    "",
-    "GET",
-    null,
-    false,
-    null,
-    "pages.LandingPage"
-  ).catch(err => console.error(err));
+    pageType: "pages.LandingPage"
+  }).catch(err => console.error(err));
   // console.log(pageStatus);
   let pageData;
   if (pageStatus.returnData.status === 200) {
