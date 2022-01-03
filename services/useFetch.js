@@ -12,8 +12,7 @@ const fetchInside = async (baseURL, {
   method = "GET",
   headers = true,
   data = null,
-  pageType = null,
-  newToken
+  pageType = null
 } = {}) => {
   let initialResponse;
   if (
@@ -23,28 +22,18 @@ const fetchInside = async (baseURL, {
   ) {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
-      headers: {
-        Authorization: `Bearer ${newToken}`,
-      },
-      body: new URLSearchParams(data),
+      credentials: "include",
+      body: new URLSearchParams(data)
     });
   } else if (pageType !== null && headers === true) {
-    initialResponse = await fetch(
-      `${baseURL}/api/v2/pages/?type=${pageType}&fields=*`,
-      {
+    initialResponse = await fetch(`${baseURL}/api/v2/pages/?type=${pageType}&fields=*`, {
         method: method,
-        headers: {
-          Authorization: `Bearer ${newToken}`,
-        },
-      }
-    );
+        credentials: "include"
+    });
   } else if (pageType !== null && headers !== true) {
-    initialResponse = await fetch(
-      `${baseURL}/api/v2/pages/?type=${pageType}&fields=*`,
-      {
-        method: method,
-      }
-    );
+    initialResponse = await fetch(`${baseURL}/api/v2/pages/?type=${pageType}&fields=*`, {
+      method: method,
+    });
   } else if (headers !== true && method === "POST") {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
@@ -53,9 +42,7 @@ const fetchInside = async (baseURL, {
   } else if (headers === true && method === "GET") {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
-      headers: {
-        Authorization: `Bearer ${newToken}`,
-      },
+      credentials: "include",
     });
   } else if (headers !== true && method === "GET") {
     initialResponse = await fetch(`${baseURL}${endpoint}`);
@@ -151,7 +138,6 @@ const fetchWrapper = async (baseURL, {
         {
           method: "POST",
           body: new URLSearchParams({
-            token: user.access,
             refresh: user.refresh,
           }),
         }
