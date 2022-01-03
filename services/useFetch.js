@@ -56,7 +56,7 @@ const fetchInside = async (baseURL, {
   ) {
     returnData = initialResponse;
   } else if (initialResponse.status === 401 || initialResponse.status === 403) {
-    returnData = responsify({ error: "Oops, something went wrong." });
+    returnData = responsify({ error: "Permission denied" });
   } else {
     returnData = responsify({ error: "Oops, something went wrong." });
   }
@@ -137,15 +137,11 @@ const fetchWrapper = async (baseURL, {
         "http://localhost:5000/dj-rest-auth/token/refresh/",
         {
           method: "POST",
-          body: new URLSearchParams({
-            refresh: user.refresh,
-          }),
+          credentials: "include"
         }
       );
 
-      const token = await reAuth.json();
       tokenAuth = {
-        refresh: user.refresh,
         isLoggedIn: reAuth.status === 200,
       };
 
@@ -157,7 +153,7 @@ const fetchWrapper = async (baseURL, {
         pageType
       });
     } catch (err) {
-      console.log(err);
+      console.error(err);
       returnData = responsify({ error: "Error refreshing token" });
     }
   } else {
