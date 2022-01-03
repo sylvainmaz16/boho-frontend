@@ -168,10 +168,10 @@ const fetchWrapper = async (
       );
     } catch (err) {
       console.log(err);
-      returnData = { error: "Oops, something went wrong." };
+      returnData = { error: "Error refreshing token" };
     }
   } else {
-    returnData = { error: "Oops, something went wrong." };
+    returnData = { error: "Unknown reponse code" };
   }
 
   return { returnData, tokenAuth };

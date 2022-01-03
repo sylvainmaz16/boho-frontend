@@ -57,12 +57,12 @@ const SignupForm = ({ setError, setVisible }) => {
       } else {
         try {
           console.log("RES 2", response)
-          const msg = await response?.json();
+          const msg = await response?.returnData?.json();
           setError(msg?.error);
           setVisible(true);
         } catch (err) {
           console.error(err)
-          setError("Oops, something went wrong.");
+          setError("Error retrieving data from response");
           setVisible(true);
         }
       }
