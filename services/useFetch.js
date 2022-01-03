@@ -145,9 +145,8 @@ const fetchWrapper = async (baseURL, {
 
       const token = await reAuth.json();
       tokenAuth = {
-        access: token.access,
         refresh: user.refresh,
-        isLoggedIn: true,
+        isLoggedIn: reAuth.status === 200,
       };
 
       returnData = await fetchInside(baseURL, {
