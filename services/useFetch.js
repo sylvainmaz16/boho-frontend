@@ -1,12 +1,11 @@
-const fetchInside = async (
-  baseURL,
+const fetchInside = async (baseURL, {
   endpoint,
-  method,
+  method = "GET",
   headers = true,
   data = null,
   pageType = null,
   newToken
-) => {
+} = {}) => {
   let initialResponse;
   if (
     (headers === true && method === "POST") ||
@@ -69,10 +68,9 @@ const fetchInside = async (
   return returnData;
 };
 
-const fetchWrapper = async (
-  baseURL,
+const fetchWrapper = async (baseURL, {
   endpoint,
-  method,
+  method = "GET",
   user = null,
   headers = true,
   data = null,
@@ -82,7 +80,7 @@ const fetchWrapper = async (
   serverCookieSet = null,
   req = null,
   res = null
-) => {
+} = {}) => {
   let initialResponse;
   if (
     (headers === true && method === "POST") ||

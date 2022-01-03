@@ -20,8 +20,7 @@ const LandingPage = ({ pageData }) => {
 };
 
 export async function getStaticProps() {
-  const pageStatus = await fetchWrapper(
-    process.env.NEXT_PUBLIC_BASE_CMS,
+  const pageStatus = await fetchWrapper(process.env.NEXT_PUBLIC_BASE_CMS, {
     "",
     "GET",
     null,
