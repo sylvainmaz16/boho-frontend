@@ -56,10 +56,12 @@ const SignupForm = ({ setError, setVisible }) => {
         router.push("/onboarding/profile");
       } else {
         try {
+          console.log("RES 2", response)
           const msg = await response?.json();
           setError(msg?.error);
           setVisible(true);
         } catch (err) {
+          console.error(err)
           setError("Oops, something went wrong.");
           setVisible(true);
         }

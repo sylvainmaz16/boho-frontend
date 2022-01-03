@@ -9,7 +9,7 @@ export const signup = (data) => {
     false,
     data,
     null
-  );
+  ).catch(err => console.error(err));
   return response;
 };
 
@@ -36,5 +36,6 @@ export const migrate = (data) => {
     data,
     null
   );
+  console.log("RES", response)
   return response;
 };

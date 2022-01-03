@@ -28,7 +28,7 @@ export async function getStaticProps() {
     false,
     null,
     "pages.LandingPage"
-  );
+  ).catch(err => console.error(err));
   // console.log(pageStatus);
   let pageData;
   if (pageStatus.returnData.status === 200) {
