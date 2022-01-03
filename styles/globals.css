@@ -752,7 +752,8 @@ p {
   min-width: 200px;
   justify-content: center;
   align-items: center;
-=======
+}
+
 /* // my styles for the dash board I've use some var(--key-word) from the root please lemme know if the is okay cams-??  */
 .dashboard_page {
   padding: 0 93.5px 0 93.5px;
