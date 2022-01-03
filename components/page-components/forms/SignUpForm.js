@@ -1,7 +1,7 @@
 import { useState } from "react";
 import AuthInputs from "./components/AuthInputs";
-import CheckboxRegular from "./CheckboxRegular";
-import CheckboxRegularPrivacy from "./CheckboxRegularPrivacy";
+import CheckboxRegular from "./components/CheckboxRegular";
+import CheckboxRegularPrivacy from "./components/CheckboxRegularPrivacy";
 import BrownSubmit from "../../buttons/BrownSubmit";
 import { signupValidation } from "../../../services/validation/authValidation";
 import { useRouter } from "next/router";
