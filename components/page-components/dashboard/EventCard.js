@@ -23,7 +23,12 @@ export const EventCard = ({
       //I also use the var(--key-word) to use the root: {} styles I defined in globals.
       style={{ color: 'var(--gray-400)' }}>
       <div className='event_card_img'>
-        <Image src={eventImage} layout='fill' objectFit='cover' />
+        <Image
+          alt='image of event'
+          src={eventImage}
+          layout='fill'
+          objectFit='cover'
+        />
       </div>
       <div className='event_card_content'>
         {/* figured it my be a good Idea to add a fail safe to title so it doesn't trail off. cams-?? */}
