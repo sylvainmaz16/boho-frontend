@@ -1,7 +1,7 @@
 import fetchWrapper from "../useFetch";
 
-export const signup = (data) => {
-  const response = fetchWrapper("/dj-rest-auth/registration/", {
+export const signup = async (data) => {
+  const response = await fetchWrapper("/dj-rest-auth/registration/", {
     method: "POST",
     data
   }).catch(err => console.error(err));

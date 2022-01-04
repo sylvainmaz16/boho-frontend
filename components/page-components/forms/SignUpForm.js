@@ -47,12 +47,9 @@ const SignupForm = ({ setError, setVisible }) => {
       const response = await signup(fullData);
       // const data = await response.json();
 
-      if (response.status === 201) {
+      if (response?.status === 201) {
         const data = await response.json();
         console.log(data);
-        console.log(data.refresh_token);
-        clientCookieSet(data.access_token, data.refresh_token, true);
-
         router.push("/onboarding/profile");
       } else {
         try {

@@ -25,6 +25,7 @@ const fetchInside = async (endpoint, {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
       credentials: "include",
+      mode: "cors",
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json"
@@ -33,15 +34,18 @@ const fetchInside = async (endpoint, {
   } else if (headers !== true && method === "POST") {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
-      body: new URLSearchParams(data),
+      mode: "cors",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
     });
-  } else if (headers === true && method === "GET") {
+  } else if (method === "GET") {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
       credentials: "include",
+      mode: "cors"
     });
-  } else if (headers !== true && method === "GET") {
-    initialResponse = await fetch(`${baseURL}${endpoint}`);
   }
 
   let returnData;
@@ -77,6 +81,7 @@ const fetchWrapper = async (endpoint, {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
       credentials: "include",
+      mode: "cors",
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json"
@@ -85,6 +90,7 @@ const fetchWrapper = async (endpoint, {
   } else if (method === "GET") {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
+      mode: "cors",
       credentials: "include"
     });
   }
@@ -105,6 +111,7 @@ const fetchWrapper = async (endpoint, {
         "http://localhost:5000/dj-rest-auth/token/refresh/",
         {
           method: "POST",
+          mode: "cors",
           credentials: "include"
         }
       );
@@ -121,7 +128,7 @@ const fetchWrapper = async (endpoint, {
       returnData = responsify({ error: "Error refreshing token" });
     }
   } else {
-    returnData = responsify({ error: "Unknown reponse code" });
+    returnData = initialResponse;
   }
 
   return returnData;
@@ -131,7 +138,8 @@ export const fetchPage = async (pageType) => {
   console.log("BASE", baseURL)
   const pageURL = `${baseURL}/api/v2/pages/?type=${pageType}&fields=*`;
   return await fetch(pageURL, {
-    credentials: "include"
+    credentials: "include",
+    mode: "cors"
   });
 }
 
