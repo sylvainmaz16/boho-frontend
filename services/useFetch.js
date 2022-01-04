@@ -35,7 +35,7 @@ const fetchInside = async (endpoint, {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
       mode: "cors",
-      body: JSON.stringify(data),
+      ...(data ? { body: JSON.stringify(data) } : null),
       headers: {
         "Content-Type": "application/json"
       }
@@ -82,7 +82,7 @@ const fetchWrapper = async (endpoint, {
       method: method,
       credentials: "include",
       mode: "cors",
-      body: JSON.stringify(data),
+      ...(data ? { body: JSON.stringify(data) } : null),
       headers: {
         "Content-Type": "application/json"
       }
