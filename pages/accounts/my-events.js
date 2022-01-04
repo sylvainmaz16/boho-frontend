@@ -6,14 +6,14 @@ export const YourEvents = ({ events, pageData, userData }) => {
   return (
     <div className="event_layout">
       {pageData}
-      <EventList userDate={userData || null} events={events} />
+      <EventList userDate={userData || null} events={false} />
     </div>
   );
 };
 
 export default YourEvents;
 
-export const getSeverSideProps = async () => {
+export const getServerSideProps = async () => {
   return {
     props: {
       events: [
@@ -22,7 +22,7 @@ export const getSeverSideProps = async () => {
           eventContent: "this is the event content",
         },
       ],
-      pageData: pageData || null,
+      pageData: 'this is page data',
       userData: null,
     },
   };

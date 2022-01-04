@@ -15,8 +15,10 @@ const EventList = ({ events }) => {
         })
       ) : (
         <EventContent
-          EventImag={false}
-          EventTitle={"No Events Yet? Explore Events"}
+
+          EventImage={false}
+          EventTitle={'No Events Yet? Explore Events'}
+
           EventContent={
             "You don't have events history, because you didn’t apply for any events yet. Explore our upcoming events to connect with our family and sell your products"
           }

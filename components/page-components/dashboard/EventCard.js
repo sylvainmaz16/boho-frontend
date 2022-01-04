@@ -21,10 +21,16 @@ export const EventCard = ({
       //cams-??
       // I've been adding style attribute to some stuff, it doesn't have priority over class names.
       //I also use the var(--key-word) to use the root: {} styles I defined in globals.
-      style={{ color: "var(--gray-400)" }}
-    >
-      <div className="event_card_img">
-        <Image src={eventImage} layout="fill" objectFit="cover" />
+
+      style={{ color: 'var(--gray-400)' }}>
+      <div className='event_card_img'>
+        <Image
+          alt='image of event'
+          src={eventImage}
+          layout='fill'
+          objectFit='cover'
+        />
+
       </div>
       <div className="event_card_content">
         {/* figured it my be a good Idea to add a fail safe to title so it doesn't trail off. cams-?? */}
