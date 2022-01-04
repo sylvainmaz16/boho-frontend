@@ -60,8 +60,7 @@ const fetchInside = async (endpoint, {
   return returnData;
 };
 
-const fetchWrapper = async (baseURL = process.env.NEXT_PUBLIC_BASE_CMS, {
-  endpoint,
+const fetchWrapper = async (endpoint, {
   method = "GET",
   user = null,
   headers = true,
