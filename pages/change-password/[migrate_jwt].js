@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import MigrateForm from '../../components/page-components/forms/MigrateForm';
 import AuthHeader from '../../components/page-components/auth/AuthHeader';
 import ErrorMessage from '../../components/error/ErrorMessage';
-import fetchWrapper from '../../services/useFetch';
+import fetchWrapper, { fetchPage } from '../../services/useFetch';
 import { pageFilter } from '../../services/cms/pages';
 
 const Migrate = ({ pageData }) => {
@@ -25,9 +25,7 @@ const Migrate = ({ pageData }) => {
 };
 
 export async function getStaticProps() {
-  const pageStatus = await fetchWrapper(process.env.NEXT_PUBLIC_BASE_CMS, {
-    pageType: "pages.AuthPage"
-  });
+  const pageStatus = await fetchPage("pages.AuthPage");
 
   let pageData;
   if (pageStatus.returnData.status === 200) {

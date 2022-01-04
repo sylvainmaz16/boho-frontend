@@ -1,5 +1,5 @@
 import Onboarding from '../../components/page-components/onboarding/Onboarding';
-import fetchWrapper from '../../services/useFetch';
+import fetchWrapper, { fetchPage } from '../../services/useFetch';
 import { pageFilter } from '../../services/cms/pages';
 import { serverCookieSet, serverCookieGet } from '../../services/cookies';
 
@@ -20,10 +20,7 @@ const OnboardingProfile = ({ pageData, userData }) => {
 export async function getServerSideProps({ req, res }) {
   const user = serverCookieGet(req, res);
 
-  const pageStatus = await fetchWrapper(process.env.NEXT_PUBLIC_BASE_CMS, {
-    user,
-    pageType: "pages.OnboardingPage"
-  });
+  const pageStatus = await fetchPage("pages.OnboardingPage");
 
   let pageData;
   if (pageStatus.tokenAuth) {

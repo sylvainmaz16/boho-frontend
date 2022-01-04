@@ -5,7 +5,7 @@ import GoogleButton from "../components/buttons/GoogleButton";
 import AuthDivider from "../components/page-components/auth/AuthDivider";
 import ErrorMessage from "../components/error/ErrorMessage";
 import Redirect from "../components/page-components/auth/Redirect";
-import fetchWrapper from "../services/useFetch";
+import fetchWrapper, { fetchPage } from "../services/useFetch";
 import { pageFilter } from "../services/cms/pages";
 import GoogleLogin from "react-google-login";
 import { clientCookieSet } from "../services/cookies";
@@ -86,9 +86,7 @@ const Login = ({ pageData }) => {
 };
 
 export async function getStaticProps() {
-  const pageStatus = await fetchWrapper(process.env.NEXT_PUBLIC_BASE_CMS, {
-    pageType: "pages.AuthPage"
-  });
+  const pageStatus = await fetchPage("pages.AuthPage")
 
   let pageData;
   if (pageStatus.returnData.status === 200) {
