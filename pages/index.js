@@ -1,7 +1,7 @@
 import RightContent from "../components/page-components/landing/RightContent";
 import LeftContent from "../components/page-components/landing/LeftContent";
 import LandingHeader from "../components/header/LandingHeader";
-import fetchWrapper from "../services/useFetch";
+import fetchWrapper, { fetchPage } from "../services/useFetch";
 import { pageFilter } from "../services/cms/pages";
 
 const LandingPage = ({ pageData }) => {
@@ -20,13 +20,12 @@ const LandingPage = ({ pageData }) => {
 };
 
 export async function getStaticProps() {
-  const pageStatus = await fetchWrapper(process.env.NEXT_PUBLIC_BASE_CMS, {
-    pageType: "pages.LandingPage"
-  }).catch(err => console.error(err));
+  const pageStatus = await fetchPage("pages.LandingPage");
   // console.log(pageStatus);
   let pageData;
-  if (pageStatus.returnData.status === 200) {
-    const pageTemp = await pageStatus.returnData.json();
+  console.log("STATUS", pageStatus)
+  if (pageStatus.status === 200) {
+    const pageTemp = await pageStatus.json();
     pageData = await pageFilter(pageTemp, "landing");
   }
 

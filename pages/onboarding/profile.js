@@ -34,10 +34,7 @@ export async function getServerSideProps({ req, res }) {
     pageData = await pageFilter(pageTemp, "onboarding p1profile");
   }
 
-  const userStatus = await fetchWrapper(process.env.NEXT_PUBLIC_BASE_CMS, {
-    endpoint: "/api/user/onboarding",
-    user
-  });
+  const userStatus = await fetchWrapper("/api/user/onboarding", { user });
 
   if (userStatus.tokenAuth) {
     serverCookieSet(req, res, userStatus.tokenAuth);

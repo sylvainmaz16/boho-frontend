@@ -26,8 +26,7 @@ const Signup = ({ pageData }) => {
       last_name: response?.profileObj?.familyName,
     };
 
-    const responseAPI = await fetchWrapper(process.env.NEXT_PUBLIC_BASE_CMS, {
-      endpoint: '/api/login/google',
+    const responseAPI = await fetchWrapper('/api/login/google', {
       method: 'POST',
       data
     });

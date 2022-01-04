@@ -1,4 +1,7 @@
 // this takes a plain object and wraps it as though it's a fetch() response
+
+const baseURL = process.env.NEXT_PUBLIC_BASE_CMS;
+
 const responsify = (errData) => {
   return {
     json() {
@@ -7,8 +10,7 @@ const responsify = (errData) => {
   }
 };
 
-const fetchInside = async (baseURL, {
-  endpoint,
+const fetchInside = async (endpoint, {
   method = "GET",
   headers = true,
   data = null,
@@ -64,7 +66,7 @@ const fetchInside = async (baseURL, {
   return returnData;
 };
 
-const fetchWrapper = async (baseURL, {
+const fetchWrapper = async (baseURL = process.env.NEXT_PUBLIC_BASE_CMS, {
   endpoint,
   method = "GET",
   user = null,
@@ -85,28 +87,9 @@ const fetchWrapper = async (baseURL, {
   ) {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
-      headers: {
-        Authorization: `Bearer ${user?.access}`,
-      },
+      credentials: "include",
       body: new URLSearchParams(data),
     });
-  } else if (pageType !== null && headers === true) {
-    initialResponse = await fetch(
-      `${baseURL}/api/v2/pages/?type=${pageType}&fields=*`,
-      {
-        method: method,
-        headers: {
-          Authorization: `Bearer ${user?.access}`,
-        },
-      }
-    );
-  } else if (pageType !== null && headers !== true) {
-    initialResponse = await fetch(
-      `${baseURL}/api/v2/pages/?type=${pageType}&fields=*`,
-      {
-        method: method,
-      }
-    );
   } else if (headers !== true && method === "POST") {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
@@ -122,7 +105,9 @@ const fetchWrapper = async (baseURL, {
   } else if (headers !== true && method === "GET") {
     initialResponse = await fetch(`${baseURL}${endpoint}`);
   }
-  let tokenAuth;
+
+  console.log("RES", initialResponse);
+
   let returnData;
   if (
     initialResponse.status === 200 ||
@@ -141,10 +126,6 @@ const fetchWrapper = async (baseURL, {
         }
       );
 
-      tokenAuth = {
-        isLoggedIn: reAuth.status === 200,
-      };
-
       returnData = await fetchInside(baseURL, {
         endpoint,
         method,
@@ -160,7 +141,15 @@ const fetchWrapper = async (baseURL, {
     returnData = responsify({ error: "Unknown reponse code" });
   }
 
-  return { returnData, tokenAuth };
+  return returnData;
 };
+
+export const fetchPage = async (pageType) => {
+  console.log("BASE", baseURL)
+  const pageURL = `${baseURL}/api/v2/pages/?type=${pageType}&fields=*`;
+  return await fetch(pageURL, {
+    credentials: "include"
+  });
+}
 
 export default fetchWrapper;
