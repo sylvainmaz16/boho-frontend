@@ -1,16 +1,16 @@
-import Onboarding from '../../components/page-components/onboarding/Onboarding';
-import fetchWrapper from '../../services/useFetch';
-import { pageFilter } from '../../services/cms/pages';
-import { serverCookieSet, serverCookieGet } from '../../services/cookies';
+import Onboarding from "../../components/page-components/onboarding/Onboarding";
+import fetchWrapper from "../../services/useFetch";
+import { pageFilter } from "../../services/cms/pages";
+import { serverCookieSet, serverCookieGet } from "../../services/cookies";
 
 const OnboardingReview = ({ pageData, userData }) => {
   console.log(userData);
   return (
     <Onboarding
       page={3}
-      imageUrl='https://res.cloudinary.com/dkceblkn7/image/upload/v1640914799/boho%20vendor%20assets/Group_442_urqw5i.svg'
-      imageAlt='picture of looking at data'
-      linkForward='/walkthrough/about-you'
+      imageUrl="https://res.cloudinary.com/dkceblkn7/image/upload/v1640914799/boho%20vendor%20assets/Group_442_urqw5i.svg"
+      imageAlt="picture of looking at data"
+      linkForward="/walkthrough/about-you"
       pageData={pageData ? pageData[0] : null}
       userData={userData}
     />
@@ -27,7 +27,7 @@ export async function getServerSideProps({ req, res }) {
     user,
     true,
     null,
-    "pages.OnboardingPage"
+    "pages.OnboardingPage",
   );
 
   let pageData;
@@ -46,7 +46,7 @@ export async function getServerSideProps({ req, res }) {
     user,
     true,
     null,
-    null
+    null,
   );
 
   if (userStatus.tokenAuth) {

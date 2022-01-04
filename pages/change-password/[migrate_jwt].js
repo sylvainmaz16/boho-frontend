@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react';
-import MigrateForm from '../../components/page-components/forms/MigrateForm';
-import AuthHeader from '../../components/page-components/auth/AuthHeader';
-import ErrorMessage from '../../components/error/ErrorMessage';
-import fetchWrapper from '../../services/useFetch';
-import { pageFilter } from '../../services/cms/pages';
+import { useState, useEffect } from "react";
+import MigrateForm from "../../components/page-components/forms/MigrateForm";
+import AuthHeader from "../../components/page-components/auth/AuthHeader";
+import ErrorMessage from "../../components/error/ErrorMessage";
+import fetchWrapper from "../../services/useFetch";
+import { pageFilter } from "../../services/cms/pages";
 
 const Migrate = ({ pageData }) => {
   const [error, setError] = useState();
   const [visible, setVisible] = useState(false);
 
   return (
-    <div className='auth container'>
-      <div className='wrapper-form'>
+    <div className="auth container">
+      <div className="wrapper-form">
         <AuthHeader pageData={pageData ? pageData[0] : null} />
         <ErrorMessage
           content={error}
@@ -32,7 +32,7 @@ export async function getStaticProps() {
     null,
     false,
     null,
-    "pages.AuthPage"
+    "pages.AuthPage",
   );
 
   let pageData;

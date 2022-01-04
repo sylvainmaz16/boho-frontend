@@ -8,7 +8,7 @@ export const signup = (data) => {
     null,
     false,
     data,
-    null
+    null,
   );
   return response;
 };
@@ -21,7 +21,7 @@ export const login = (data) => {
     null,
     false,
     data,
-    null
+    null,
   );
   return response;
 };
@@ -34,7 +34,7 @@ export const migrate = (data) => {
     null,
     false,
     data,
-    null
+    null,
   );
   return response;
 };

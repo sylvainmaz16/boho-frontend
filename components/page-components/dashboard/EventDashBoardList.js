@@ -1,9 +1,9 @@
-import React from 'react';
-import EventCard from './EventCard';
+import React from "react";
+import EventCard from "./EventCard";
 
 export const EventDashBoardList = ({ events }) => {
   return (
-    <div className='dashboard_event_list'>
+    <div className="dashboard_event_list">
       {events.map((event, idx) => {
         return (
           <EventCard

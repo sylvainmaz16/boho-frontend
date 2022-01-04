@@ -1,10 +1,10 @@
-import EventList from '../../components/page-components/events/EventList';
+import EventList from "../../components/page-components/events/EventList";
 
-import React from 'react';
+import React from "react";
 
 export const YourEvents = ({ events, pageData, userData }) => {
   return (
-    <div className='event_layout'>
+    <div className="event_layout">
       {pageData}
       <EventList userDate={userData || null} events={false} />
     </div>
@@ -18,8 +18,8 @@ export const getServerSideProps = async () => {
     props: {
       events: [
         {
-          eventTitle: 'The Bake off',
-          eventContent: 'this is the event content',
+          eventTitle: "The Bake off",
+          eventContent: "this is the event content",
         },
       ],
       pageData: 'this is page data',

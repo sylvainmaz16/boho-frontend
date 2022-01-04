@@ -8,7 +8,7 @@ const main = (
       isLoggedIn: false,
     },
   },
-  action
+  action,
 ) => {
   switch (action.type) {
     case t.SET_TOKENS:
