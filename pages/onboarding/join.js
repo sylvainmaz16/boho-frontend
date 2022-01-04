@@ -1,7 +1,6 @@
-import Onboarding from '../../components/page-components/onboarding/Onboarding';
-import fetchWrapper, { fetchPage } from '../../services/useFetch';
-import { pageFilter } from '../../services/cms/pages';
-import { serverCookieSet, serverCookieGet } from '../../services/cookies';
+import Onboarding from '~/components/page-components/onboarding/Onboarding';
+import fetchWrapper, { fetchPage } from '~/services/useFetch';
+import { pageFilter } from '~/services/cms/pages';
 
 const OnboardingJoin = ({ pageData, userData }) => {
   console.log(userData);
@@ -18,24 +17,15 @@ const OnboardingJoin = ({ pageData, userData }) => {
 };
 
 export async function getServerSideProps({ req, res }) {
-  const user = serverCookieGet(req, res);
-
   const pageStatus = await fetchPage("pages.OnboardingPage");
 
   let pageData;
-  if (pageStatus.tokenAuth) {
-    serverCookieSet(req, res, pageStatus.tokenAuth);
-  }
   if (pageStatus.status === 200) {
     const pageTemp = await pageStatus.json();
     pageData = await pageFilter(pageTemp, "onboarding p2join");
   }
 
-  const userStatus = await fetchWrapper("/api/user/onboarding", { user });
-
-  if (userStatus.tokenAuth) {
-    serverCookieSet(req, res, userStatus.tokenAuth);
-  }
+  const userStatus = await fetchWrapper("/api/user/onboarding");
 
   let userData;
   if (userStatus.status === 200) {

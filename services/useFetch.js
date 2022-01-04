@@ -72,7 +72,6 @@ const fetchWrapper = async (endpoint, {
   pageType = null,
   clientCookieSet = null,
   clientCookieDelete = null,
-  serverCookieSet = null,
   req = null,
   res = null
 } = {}) => {

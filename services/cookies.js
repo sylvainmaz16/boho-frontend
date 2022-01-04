@@ -8,18 +8,6 @@ export const cookieDecode = (cookie) => {
   return useableCookie;
 };
 
-export const serverCookieGet = (req, res) => {
-  const myCookies = new Cookies(req, res);
-  const myServerCookie = myCookies.get("boho-cookie");
-  const goodCookie = cookieDecode(myServerCookie);
-  return goodCookie;
-};
-
-export const serverCookieSet = (req, res, data) => {
-  const myCookies = new Cookies(req, res);
-  myCookies.set("boho-cookie", JSON.stringify(data), { overwrite: true });
-};
-
 export const clientCookieGet = () => {
   const myJScookie = JSCookie.get("boho-cookie");
   const goodCookie = cookieDecode(myJScookie);
