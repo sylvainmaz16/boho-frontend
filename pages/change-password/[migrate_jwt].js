@@ -28,8 +28,8 @@ export async function getStaticProps() {
   const pageStatus = await fetchPage("pages.AuthPage");
 
   let pageData;
-  if (pageStatus.returnData.status === 200) {
-    const pageTemp = await pageStatus.returnData.json();
+  if (pageStatus.status === 200) {
+    const pageTemp = await pageStatus.json();
     pageData = await pageFilter(pageTemp, "migrate");
   }
 

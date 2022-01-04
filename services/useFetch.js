@@ -1,7 +1,7 @@
 // this takes a plain object and wraps it as though it's a fetch() response
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_CMS;
-
+console.log("BASE??", baseURL)
 const responsify = (errData) => {
   return {
     json() {
@@ -25,16 +25,10 @@ const fetchInside = async (endpoint, {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
       credentials: "include",
-      body: new URLSearchParams(data)
-    });
-  } else if (pageType !== null && headers === true) {
-    initialResponse = await fetch(`${baseURL}/api/v2/pages/?type=${pageType}&fields=*`, {
-        method: method,
-        credentials: "include"
-    });
-  } else if (pageType !== null && headers !== true) {
-    initialResponse = await fetch(`${baseURL}/api/v2/pages/?type=${pageType}&fields=*`, {
-      method: method,
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
     });
   } else if (headers !== true && method === "POST") {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
@@ -80,30 +74,20 @@ const fetchWrapper = async (baseURL = process.env.NEXT_PUBLIC_BASE_CMS, {
   res = null
 } = {}) => {
   let initialResponse;
-  if (
-    (headers === true && method === "POST") ||
-    method === "PUT" ||
-    method === "PATCH"
-  ) {
+  if (method === "POST" || method === "PUT" || method === "PATCH") {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
       credentials: "include",
-      body: new URLSearchParams(data),
-    });
-  } else if (headers !== true && method === "POST") {
-    initialResponse = await fetch(`${baseURL}${endpoint}`, {
-      method: method,
-      body: new URLSearchParams(data),
-    });
-  } else if (headers === true && method === "GET") {
-    initialResponse = await fetch(`${baseURL}${endpoint}`, {
-      method: method,
+      body: JSON.stringify(data),
       headers: {
-        Authorization: `Bearer ${user?.access}`,
-      },
+        "Content-Type": "application/json"
+      }
     });
-  } else if (headers !== true && method === "GET") {
-    initialResponse = await fetch(`${baseURL}${endpoint}`);
+  } else if (method === "GET") {
+    initialResponse = await fetch(`${baseURL}${endpoint}`, {
+      method: method,
+      credentials: "include"
+    });
   }
 
   console.log("RES", initialResponse);

@@ -47,8 +47,8 @@ const SignupForm = ({ setError, setVisible }) => {
       const response = await signup(fullData);
       // const data = await response.json();
 
-      if (response.returnData.status === 201) {
-        const data = await response.returnData.json();
+      if (response.status === 201) {
+        const data = await response.json();
         console.log(data);
         console.log(data.refresh_token);
         clientCookieSet(data.access_token, data.refresh_token, true);
@@ -57,7 +57,7 @@ const SignupForm = ({ setError, setVisible }) => {
       } else {
         try {
           console.log("RES 2", response)
-          const msg = await response?.returnData?.json();
+          const msg = await response?.json();
           setError(msg?.error);
           setVisible(true);
         } catch (err) {

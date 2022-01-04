@@ -29,8 +29,8 @@ const MigrateForm = ({ setError, setVisible }) => {
         setVisible(true);
       } else if (isValid.success) {
         const response = await migrate(data);
-        if (response.returnData.status === 201) {
-          const data = await response.returnData.json();
+        if (response.status === 201) {
+          const data = await response.json();
           clientCookieSet(data.access_token, data.refresh_token, true);
 
           router.push("/onboarding/profile");

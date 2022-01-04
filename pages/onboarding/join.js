@@ -26,8 +26,8 @@ export async function getServerSideProps({ req, res }) {
   if (pageStatus.tokenAuth) {
     serverCookieSet(req, res, pageStatus.tokenAuth);
   }
-  if (pageStatus.returnData.status === 200) {
-    const pageTemp = await pageStatus.returnData.json();
+  if (pageStatus.status === 200) {
+    const pageTemp = await pageStatus.json();
     pageData = await pageFilter(pageTemp, "onboarding p2join");
   }
 
@@ -38,8 +38,8 @@ export async function getServerSideProps({ req, res }) {
   }
 
   let userData;
-  if (userStatus.returnData.status === 200) {
-    userData = await userStatus.returnData.json();
+  if (userStatus.status === 200) {
+    userData = await userStatus.json();
   }
 
   return {

@@ -33,8 +33,8 @@ const Login = ({ pageData }) => {
 
     console.log(response);
 
-    if (responseAPI.returnData.status === 200) {
-      const data = await responseAPI.returnData.json();
+    if (responseAPI.status === 200) {
+      const data = await responseAPI.json();
       clientCookieSet(data.access_token, data.refresh_token, true);
       console.log(window.location.pathname);
 
@@ -89,8 +89,8 @@ export async function getStaticProps() {
   const pageStatus = await fetchPage("pages.AuthPage")
 
   let pageData;
-  if (pageStatus.returnData.status === 200) {
-    const pageTemp = await pageStatus.returnData.json();
+  if (pageStatus.status === 200) {
+    const pageTemp = await pageStatus.json();
     pageData = await pageFilter(pageTemp, "login");
   }
   return {
