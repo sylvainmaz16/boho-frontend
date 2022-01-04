@@ -4,43 +4,6 @@ import EventDashBoardList from "../components/page-components/dashboard/EventDas
 import Head from "next/head";
 
 const Dashboard = () => {
-  let user = "Sherlock";
-  //just dummy data for testing how it looks.
-  //lemme know if there is a particular events model you'd like me to follow? cams-??
-  const fakeEvents = [
-    {
-      eventImage: "/images/test.jpg",
-      eventLocation: "22 B backer Street",
-      eventTitle: "The Hound of the Baskervilles",
-      eventDates: "12th - 15th",
-      eventLength: "2hrs",
-      eventDetails: "events/1",
-    },
-    {
-      eventImage: "/images/test.jpg",
-      eventLocation: "22 B backer Street",
-      eventTitle: "The Hound of the Baskervilles",
-      eventDates: "12th - 15th",
-      eventLength: "2hrs",
-      eventDetails: "events/1",
-    },
-    {
-      eventImage: "/images/test.jpg",
-      eventLocation: "22 B backer Street",
-      eventTitle: "The Hound of the Baskervilles",
-      eventDates: "12th - 15th",
-      eventLength: "2hrs",
-      eventDetails: "events/1",
-    },
-    {
-      eventImage: "/images/test.jpg",
-      eventLocation: "22 B backer Street",
-      eventTitle: "The Hound of the Baskervilles",
-      eventDates: "12th - 15th",
-      eventLength: "2hrs",
-      eventDetails: "events/1",
-    },
-  ];
   return (
     <>
       <Head>

@@ -1,9 +1,5 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap");
 
-
-/* added some root styles for easy access */
-/* is That okay? cams-?? */
 :root {
   --sm: 1.5rem;
   --lg: 2.5rem;
@@ -777,7 +773,7 @@ progress[value] {
   color: var(--accent-dark);
 }
 
-.dashboard_event_list {
+.event_list {
   display: flex;
   flex-flow: row wrap;
 }
