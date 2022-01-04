@@ -27,7 +27,7 @@ export async function getStaticProps() {
     null,
     false,
     null,
-    "pages.LandingPage"
+    "pages.LandingPage",
   );
   // console.log(pageStatus);
   let pageData;

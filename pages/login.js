@@ -33,7 +33,7 @@ const Login = ({ pageData }) => {
       null,
       false,
       data,
-      null
+      null,
     );
 
     console.log(response);
@@ -98,7 +98,7 @@ export async function getStaticProps() {
     null,
     false,
     null,
-    "pages.AuthPage"
+    "pages.AuthPage",
   );
 
   let pageData;

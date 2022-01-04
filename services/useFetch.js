@@ -5,7 +5,7 @@ const fetchInside = async (
   headers = true,
   data = null,
   pageType = null,
-  newToken
+  newToken,
 ) => {
   let initialResponse;
   if (
@@ -28,14 +28,14 @@ const fetchInside = async (
         headers: {
           Authorization: `Bearer ${newToken}`,
         },
-      }
+      },
     );
   } else if (pageType !== null && headers !== true) {
     initialResponse = await fetch(
       `${baseURL}/api/v2/pages/?type=${pageType}&fields=*`,
       {
         method: method,
-      }
+      },
     );
   } else if (headers !== true && method === "POST") {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
@@ -81,7 +81,7 @@ const fetchWrapper = async (
   clientCookieDelete = null,
   serverCookieSet = null,
   req = null,
-  res = null
+  res = null,
 ) => {
   let initialResponse;
   if (
@@ -104,14 +104,14 @@ const fetchWrapper = async (
         headers: {
           Authorization: `Bearer ${user?.access}`,
         },
-      }
+      },
     );
   } else if (pageType !== null && headers !== true) {
     initialResponse = await fetch(
       `${baseURL}/api/v2/pages/?type=${pageType}&fields=*`,
       {
         method: method,
-      }
+      },
     );
   } else if (headers !== true && method === "POST") {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
@@ -147,7 +147,7 @@ const fetchWrapper = async (
             token: user.access,
             refresh: user.refresh,
           }),
-        }
+        },
       );
 
       const token = await reAuth.json();
@@ -164,7 +164,7 @@ const fetchWrapper = async (
         headers,
         data,
         pageType,
-        token.access
+        token.access,
       );
     } catch (err) {
       console.log(err);
