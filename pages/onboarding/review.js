@@ -25,7 +25,10 @@ export async function getServerSideProps({ req, res }) {
     pageData = await pageFilter(pageTemp, "onboarding p3review");
   }
 
-  const userStatus = await fetchWrapper("/api/user/onboarding");
+  const userStatus = await fetchWrapper("/api/user/onboarding", {
+    mode: "cors",
+    credentials: "include"
+  });
 
   let userData;
   if (userStatus.status === 200) {
