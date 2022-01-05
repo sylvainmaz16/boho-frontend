@@ -49,11 +49,14 @@ const SignupForm = ({ setError, setVisible }) => {
 
       if (response?.status === 201) {
         const data = await response.json();
-        console.log(data);
+        clientCookieSet({
+          access: data.access_token,
+          refresh: data.refresh_token,
+          isLoggedIn: true,
+        });
         router.push("/onboarding/profile");
       } else {
         try {
-          console.log("RES 2", response)
           const msg = await response?.json();
           setError(msg?.error);
           setVisible(true);
@@ -64,10 +67,6 @@ const SignupForm = ({ setError, setVisible }) => {
         }
       }
     }
-    // } catch (err) {
-    //   setError(err.error || "Oops, something went wrong.");
-    //   setVisible(true);
-    // }
   };
 
   return (

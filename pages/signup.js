@@ -18,8 +18,6 @@ const Signup = ({ pageData }) => {
   const router = useRouter();
 
   const positiveResponseGoogle = async (response) => {
-    console.log("RESPONSE", response)
-
     if (response.error) {
       setError("Something went wrong, please try again in a moment.");
     }
