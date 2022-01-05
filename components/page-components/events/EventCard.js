@@ -5,7 +5,7 @@ import {
   CalenderIcon,
   LocationIcon,
   EventDetailsButton,
-} from '../dashboard/icons';
+} from '../icons';
 
 export const EventCard = ({
   eventImage,
