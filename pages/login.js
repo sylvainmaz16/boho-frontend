@@ -56,7 +56,7 @@ const Login = ({ pageData }) => {
       <div className="wrapper-form">
         <AuthHeader pageData={pageData ? pageData[0] : null} />
         <GoogleLogin
-          clientId="698856264513-b8rl7o427e166fqp5rcu3hm6vqfkv212.apps.googleusercontent.com"
+          clientId="584643384358-ck6a8dph9o5dnf7fm8jjtere9s02s4c7.apps.googleusercontent.com"
           render={(renderProps) => (
             <GoogleButton
               content="Login with Google"

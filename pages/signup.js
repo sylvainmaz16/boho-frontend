@@ -18,28 +18,35 @@ const Signup = ({ pageData }) => {
   const router = useRouter();
 
   const positiveResponseGoogle = async (response) => {
-    const data = {
+    console.log("RESPONSE", response)
+
+    if (response.error) {
+      setError("Something went wrong, please try again in a moment.");
+    }
+
+    const postData = {
       access_token: response.accessToken,
       id_token: response.idToken,
-      email: response.profileObj.email,
+      email: response.profileObj?.email,
       first_name: response?.profileObj?.givenName,
       last_name: response?.profileObj?.familyName,
     };
 
     const responseAPI = await fetchWrapper('/api/login/google', {
       method: 'POST',
-      data
+      data: postData
     });
-
+    console.log("RESPONSE API", responseAPI)
+    const data = await responseAPI.json();
+    console.log("DATA", data)
     if (responseAPI.status === 200) {
-      const data = await responseAPI.json();
       clientCookieSet(data.access_token, data.refresh_token, true);
       console.log(window.location.pathname);
 
       router.push('/onboarding/profile');
     } else {
       try {
-        const msg = await response?.json();
+        const msg = await responseAPI?.json();
         setError(msg?.error);
         setVisible(true);
       } catch (err) {
@@ -54,7 +61,7 @@ const Signup = ({ pageData }) => {
       <div className='wrapper-form'>
         <AuthHeader pageData={pageData ? pageData[0] : null} />
         <GoogleLogin
-          clientId='698856264513-b8rl7o427e166fqp5rcu3hm6vqfkv212.apps.googleusercontent.com'
+          clientId='584643384358-ck6a8dph9o5dnf7fm8jjtere9s02s4c7.apps.googleusercontent.com'
           render={(renderProps) => (
             <GoogleButton
               content='Signup with Google'
@@ -63,6 +70,7 @@ const Signup = ({ pageData }) => {
           )}
           buttonText='Login'
           onSuccess={positiveResponseGoogle}
+          onFailure={positiveResponseGoogle}
           cookiePolicy={'single_host_origin'}
         />
         <AuthDivider />

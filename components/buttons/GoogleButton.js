@@ -3,9 +3,6 @@ import Image from "next/image";
 const GoogleButton = ({ renderProps, content }) => {
   return (
     <button
-      // isSignedIn={true}
-      // onSuccess={responseGoogle}
-      // clientId="698856264513-b8rl7o427e166fqp5rcu3hm6vqfkv212.apps.googleusercontent.com"
       onClick={renderProps?.onClick}
       disabled={renderProps?.disabled}
       className="button__google"
