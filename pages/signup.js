@@ -34,9 +34,8 @@ const Signup = ({ pageData }) => {
       method: 'POST',
       data: postData
     });
-    console.log("RESPONSE API", responseAPI)
+
     const data = await responseAPI.json();
-    console.log("DATA", data)
     if (responseAPI.status === 200) {
       clientCookieSet(data.access_token, data.refresh_token, true);
       console.log(window.location.pathname);

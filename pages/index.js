@@ -21,9 +21,7 @@ const LandingPage = ({ pageData }) => {
 
 export async function getStaticProps() {
   const pageStatus = await fetchPage("pages.LandingPage");
-  // console.log(pageStatus);
   let pageData;
-  console.log("STATUS", pageStatus)
   if (pageStatus.status === 200) {
     const pageTemp = await pageStatus.json();
     pageData = await pageFilter(pageTemp, "landing");

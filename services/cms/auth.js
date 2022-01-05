@@ -21,6 +21,5 @@ export const migrate = (data) => {
     method: "POST",
     data
   });
-  console.log("RES", response)
   return response;
 };

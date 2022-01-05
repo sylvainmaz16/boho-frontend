@@ -1,7 +1,6 @@
 // this takes a plain object and wraps it as though it's a fetch() response
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_CMS;
-console.log("BASE??", baseURL)
 const responsify = (errData) => {
   return {
     json() {
@@ -94,8 +93,6 @@ const fetchWrapper = async (endpoint, {
     });
   }
 
-  console.log("RES", initialResponse);
-
   let returnData;
   if (
     initialResponse.status === 200 ||
@@ -134,7 +131,6 @@ const fetchWrapper = async (endpoint, {
 };
 
 export const fetchPage = async (pageType) => {
-  console.log("BASE", baseURL)
   const pageURL = `${baseURL}/api/v2/pages/?type=${pageType}&fields=*`;
   return await fetch(pageURL, {
     credentials: "include",
