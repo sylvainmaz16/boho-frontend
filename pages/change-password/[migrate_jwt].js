@@ -10,8 +10,8 @@ const Migrate = ({ pageData }) => {
   const [visible, setVisible] = useState(false);
 
   return (
-    <div className='auth container'>
-      <div className='wrapper-form'>
+    <div className="auth container">
+      <div className="wrapper-form">
         <AuthHeader pageData={pageData ? pageData[0] : null} />
         <ErrorMessage
           content={error}

@@ -1,6 +1,6 @@
 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap');
 
 /* added some root styles for easy access */
 /* is That okay? cams-?? */
@@ -67,16 +67,15 @@ h4 {
   width: var(--xl);
 }
 
-
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
 }
 
 button {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 h2 {
@@ -754,7 +753,6 @@ p {
   align-items: center;
 }
 
-/* // my styles for the dash board I've use some var(--key-word) from the root please lemme know if the is okay cams-??  */
 .dashboard_page {
   padding: 0 93.5px 0 93.5px;
 }
@@ -791,7 +789,7 @@ progress[value] {
   border-radius: var(--rounded);
   overflow: hidden;
   font-weight: bold;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 
 .event_card_content {

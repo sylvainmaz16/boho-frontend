@@ -7,9 +7,9 @@ const OnboardingProfile = ({ pageData, userData }) => {
   return (
     <Onboarding
       page={1}
-      imageUrl='https://res.cloudinary.com/dkceblkn7/image/upload/v1640914362/boho%20vendor%20assets/thing_hl9hnm.svg'
-      imageAlt='picture of reviewing information'
-      linkForward='/onboarding/join'
+      imageUrl="https://res.cloudinary.com/dkceblkn7/image/upload/v1640914362/boho%20vendor%20assets/thing_hl9hnm.svg"
+      imageAlt="picture of reviewing information"
+      linkForward="/onboarding/join"
       pageData={pageData ? pageData[0] : null}
       userData={userData}
     />

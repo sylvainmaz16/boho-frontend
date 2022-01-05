@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
-import SignupForm from '../components/page-components/forms/SignUpForm';
-import AuthHeader from '../components/page-components/auth/AuthHeader';
-import GoogleButton from '../components/buttons/GoogleButton';
-import AuthDivider from '../components/page-components/auth/AuthDivider';
-import ErrorMessage from '../components/error/ErrorMessage';
-import Redirect from '../components/page-components/auth/Redirect';
-import fetchWrapper, { fetchPage } from '../services/useFetch';
-import { pageFilter } from '../services/cms/pages';
-import GoogleLogin from 'react-google-login';
-import { clientCookieSet } from '../services/cookies';
-import { useRouter } from 'next/router';
+import { useState, useEffect } from "react";
+import SignupForm from "../components/page-components/forms/SignUpForm";
+import AuthHeader from "../components/page-components/auth/AuthHeader";
+import GoogleButton from "../components/buttons/GoogleButton";
+import AuthDivider from "../components/page-components/auth/AuthDivider";
+import ErrorMessage from "../components/error/ErrorMessage";
+import Redirect from "../components/page-components/auth/Redirect";
+import fetchWrapper from "../services/useFetch";
+import { pageFilter } from "../services/cms/pages";
+import GoogleLogin from "react-google-login";
+import { clientCookieSet } from "../services/cookies";
+import { useRouter } from "next/router";
 
 const Signup = ({ pageData }) => {
   const [error, setError] = useState();
@@ -38,34 +38,32 @@ const Signup = ({ pageData }) => {
     const data = await responseAPI.json();
     if (responseAPI.status === 200) {
       clientCookieSet(data.access_token, data.refresh_token, true);
-      console.log(window.location.pathname);
-
-      router.push('/onboarding/profile');
+      router.push("/onboarding/profile");
     } else {
       try {
         const msg = await responseAPI?.json();
         setError(msg?.error);
         setVisible(true);
       } catch (err) {
-        setError('Oops, something went wrong.');
+        setError("Oops, something went wrong.");
         setVisible(true);
       }
     }
   };
 
   return (
-    <div className='auth container'>
-      <div className='wrapper-form'>
+    <div className="auth container">
+      <div className="wrapper-form">
         <AuthHeader pageData={pageData ? pageData[0] : null} />
         <GoogleLogin
           clientId='584643384358-ck6a8dph9o5dnf7fm8jjtere9s02s4c7.apps.googleusercontent.com'
           render={(renderProps) => (
             <GoogleButton
-              content='Signup with Google'
+              content="Signup with Google"
               renderProps={renderProps}
             />
           )}
-          buttonText='Login'
+          buttonText="Login"
           onSuccess={positiveResponseGoogle}
           onFailure={positiveResponseGoogle}
           cookiePolicy={'single_host_origin'}
@@ -78,9 +76,9 @@ const Signup = ({ pageData }) => {
         />
         <SignupForm setError={setError} setVisible={setVisible} />
         <Redirect
-          content='Already have an account?'
-          link='/login'
-          linkContent='Login'
+          content="Already have an account?"
+          link="/login"
+          linkContent="Login"
         />
       </div>
     </div>

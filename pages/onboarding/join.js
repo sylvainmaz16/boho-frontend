@@ -3,13 +3,12 @@ import fetchWrapper, { fetchPage } from '~/services/useFetch';
 import { pageFilter } from '~/services/cms/pages';
 
 const OnboardingJoin = ({ pageData, userData }) => {
-  console.log(userData);
   return (
     <Onboarding
       page={2}
-      imageUrl='https://res.cloudinary.com/dkceblkn7/image/upload/v1640914749/boho%20vendor%20assets/Group_443_eor1kt.svg'
-      imageAlt='picture of looking at data'
-      linkForward='/onboarding/review'
+      imageUrl="https://res.cloudinary.com/dkceblkn7/image/upload/v1640914749/boho%20vendor%20assets/Group_443_eor1kt.svg"
+      imageAlt="picture of looking at data"
+      linkForward="/onboarding/review"
       pageData={pageData ? pageData[0] : null}
       userData={userData}
     />

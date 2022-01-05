@@ -31,13 +31,9 @@ const Login = ({ pageData }) => {
       data
     });
 
-    console.log(response);
-
     if (responseAPI.status === 200) {
       const data = await responseAPI.json();
       clientCookieSet(data.access_token, data.refresh_token, true);
-      console.log(window.location.pathname);
-
       router.push("/onboarding/dashboard");
     } else {
       try {

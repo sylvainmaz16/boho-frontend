@@ -1,11 +1,11 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 import {
   ClockIcon,
   CalenderIcon,
   LocationIcon,
   EventDetailsButton,
-} from './icons';
+} from "./icons";
 
 export const EventCard = ({
   eventImage,
@@ -17,31 +17,38 @@ export const EventCard = ({
 }) => {
   return (
     <div
-      className='event_card'
+      className="event_card"
       //cams-??
       // I've been adding style attribute to some stuff, it doesn't have priority over class names.
       //I also use the var(--key-word) to use the root: {} styles I defined in globals.
+
       style={{ color: 'var(--gray-400)' }}>
       <div className='event_card_img'>
-        <Image src={eventImage} layout='fill' objectFit='cover' />
+        <Image
+          alt='image of event'
+          src={eventImage}
+          layout='fill'
+          objectFit='cover'
+        />
+
       </div>
-      <div className='event_card_content'>
+      <div className="event_card_content">
         {/* figured it my be a good Idea to add a fail safe to title so it doesn't trail off. cams-?? */}
-        <h4>{eventTitle.split('', 32).join('')}</h4>
+        <h4>{eventTitle.split("", 32).join("")}</h4>
         <div>
-          <LocationIcon size='sm' color='#BC7F7C' />
-          <div className='font-xl-bold'>{eventLocation}</div>
+          <LocationIcon size="sm" color="#BC7F7C" />
+          <div className="font-xl-bold">{eventLocation}</div>
         </div>
         <div>
-          <CalenderIcon size='sm' color='#BC7F7C' />
+          <CalenderIcon size="sm" color="#BC7F7C" />
           <div>{eventDates}</div>
         </div>
         <div>
-          <ClockIcon size='sm' color='#BC7F7C' />
+          <ClockIcon size="sm" color="#BC7F7C" />
           <div>{eventLength}</div>
         </div>
       </div>
-      <EventDetailsButton url='/dashboard' />
+      <EventDetailsButton url="/dashboard" />
     </div>
   );
 };

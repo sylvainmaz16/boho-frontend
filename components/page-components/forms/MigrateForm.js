@@ -64,7 +64,7 @@ const MigrateForm = ({ setError, setVisible }) => {
         placeholder="Password"
         pattern={
           new RegExp(
-            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/i
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/i,
           )
         }
       />
@@ -79,7 +79,7 @@ const MigrateForm = ({ setError, setVisible }) => {
         placeholder="Confirm Password"
         pattern={
           new RegExp(
-            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/i
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/i,
           )
         }
       />
