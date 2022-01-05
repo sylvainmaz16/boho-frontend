@@ -46,3 +46,59 @@ from the creators of Next.js.
 Check out our
 [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more
 details.
+
+<br />
+
+## A Reference of All the Icons.
+
+![Tux, the Linux mascot](public/images/IconRef.png)
+
+**Here Is a full List EditIcon,**
+
+Be aware the I used module path alias to export these Icons So to import the
+Icons use object destructuring and import from:
+
+```jsx
+import { IconName } from "@/icons/*";
+
+export const MyComponent = () => {
+  return (
+    <div>
+      <IconName />
+    </div>
+  );
+};
+```
+
+- `<SearchIcon />`
+- `<PhoneIcon />`
+- `<CalenderIcon />`
+- `<ClockIcon />`
+- `<LockIcon />`
+- `<UserIcon />`
+- `<EmailIcon />`
+- `<ViewIcon />`
+- `<MenuIcon />`
+- `<FilterIcon />`
+- `<SyncIcon />`
+- `<DownloadIcon />`
+- `<DeleteIcon />`
+- `<CheckIcon />`
+- `<WaitListIcon />`
+- `<ImageIcon />`
+- `<MessagesIcon />`
+- `<ChevronRightIcon />`
+- `<ChevronLeftIcon />`
+- `<BackArrow />`
+- `<PlusIcon />`
+- `<CloseIcon />`
+- `<OofIcon />`
+- `<EventIcon />`
+- `<LocationIcon />`
+- `<BoothIcon />`
+- `<HelpIcon />`
+- `<CategoryIcon />`
+- `<BroadcastIcon />`
+- `<InvoiceIcon />`
+- `<TodoListIcon />`
+- ` ChatIcon />`
