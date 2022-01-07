@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import LoginForm from "../components/page-components/forms/LoginForm";
 import AuthHeader from "../components/page-components/auth/AuthHeader";
 import GoogleButton from "../components/buttons/GoogleButton";

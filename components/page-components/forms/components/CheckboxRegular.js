@@ -9,7 +9,7 @@ const CheckboxRegular = ({
 }) => {
   return (
     <div className="checkbox__regularContainer">
-      <label className="checkbox__regularLabel">
+      <label className="checkbox__regularLabel" htmlFor={htmlFor}>
         {value ? (
           <Image
             src="https://res.cloudinary.com/dkceblkn7/image/upload/v1640912659/boho%20vendor%20assets/Group_157_ajnkod.svg"

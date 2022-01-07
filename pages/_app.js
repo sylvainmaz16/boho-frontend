@@ -1,5 +1,4 @@
-import { Provider } from "react-redux";
-import useSWR, { SWRConfig } from "swr";
+import { SWRConfig } from "swr";
 import { wrapper } from "../services/redux/store";
 import "../styles/globals.css";
 

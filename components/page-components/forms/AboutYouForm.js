@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SectionHeader from "../shared/SectionHeader";
 import InputsRegular from "./components/InputsRegular";
 
