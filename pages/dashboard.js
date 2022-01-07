@@ -1,16 +1,15 @@
 import MainLayout from "../components/layout/MainLayout";
-import ProgressBar from "../components/page-components/dashboard/ProgressBar";
-import EventDashBoardList from "../components/page-components/dashboard/EventDashBoardList";
+import EventList from "@/page-components/events/EventList";
+import getAllEvents, { getLimitedEvents, getRandomUser } from "@/testdata/*";
+import DashBoardHead from "@/components/page-components/dashboard/DashBoardHead";
 import Head from "next/head";
 
-const Dashboard = () => {
+const Dashboard = ({ user, events }) => {
   return (
     <>
       <Head>
-
-        <meta charSet='utf-8' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Dashboard</title>
         <meta name="description" content="a list of events" />
         <meta name="author" content="Boho" />
@@ -18,13 +17,9 @@ const Dashboard = () => {
         <meta name="robots" content="index, follow" />
         <meta name="rating" content="14 years" />
       </Head>
-      <div className="dashboard_page" style={{ minHeight: "80vh" }}>
-        <div className="dashboard_head">
-          <h1>Welcome, {user}</h1>
-          <ProgressBar />
-        </div>
-        <EventDashBoardList events={fakeEvents} />
-      </div>
+      <DashBoardHead name={user.first_name}>
+        <EventList events={events} />
+      </DashBoardHead>
     </>
   );
 };
@@ -33,4 +28,13 @@ export default Dashboard;
 
 Dashboard.getLayout = function getLayout(page) {
   return <MainLayout>{page}</MainLayout>;
+};
+
+export const getStaticProps = async () => {
+  const user = await getRandomUser();
+  const events = await getLimitedEvents(3);
+
+  return {
+    props: { user: user, events: events },
+  };
 };
