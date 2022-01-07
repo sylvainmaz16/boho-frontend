@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AuthInputs from "./AuthInputs";
+import AuthInputs from "./components/AuthInputs";
 import BrownSubmit from "../../buttons/BrownSubmit";
 import { migrateValidation } from "../../../services/validation/authValidation";
 import { useRouter } from "next/router";
