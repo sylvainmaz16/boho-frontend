@@ -9,6 +9,7 @@
 /.pnp
 .pnp.js
 /testdata
+/pages/test-icons
 # testing
 /coverage
 
