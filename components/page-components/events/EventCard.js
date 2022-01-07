@@ -1,47 +1,58 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import IconButton from "@/buttons/IconButton";
 import {
   ClockIcon,
   CalenderIcon,
   LocationIcon,
-  EventDetailsButton,
-} from '../icons';
+  ChevronLeftIcon,
+} from "@/icons/*";
 
 export const EventCard = ({
   eventImage,
-  eventTitle,
+  eventName,
   eventLocation,
-  eventDates,
-  eventLength,
-  eventDetails,
+  eventStart,
+  eventEnd,
+  eventHours,
+  eventUrl,
 }) => {
   return (
-    <div className='event_card' style={{ color: 'var(--gray-400)' }}>
-      <div className='event_card_img'>
+    <div className="event_card">
+      <div className="event_card_img">
         <Image
-          alt='image of event'
+          alt="image of event"
           src={eventImage}
-          layout='fill'
-          objectFit='cover'
+          layout="fill"
+          objectFit="cover"
         />
-
       </div>
-      <div className='event_card_content'>
-        <h4>{eventTitle.split('', 32).join('')}</h4>
+      <div className="event__card__content">
+        <h4>{eventName}</h4>
         <div>
-          <LocationIcon size="sm" color="#BC7F7C" />
-          <div className="font-xl-bold">{eventLocation}</div>
+          <LocationIcon color="accent-3" />
+          <p className="font-xl-bold">{eventLocation}</p>
         </div>
         <div>
-          <CalenderIcon size="sm" color="#BC7F7C" />
-          <div>{eventDates}</div>
+          <CalenderIcon color="accent-3" />
+          <p>
+            From {eventStart} to {eventEnd}
+          </p>
         </div>
         <div>
-          <ClockIcon size="sm" color="#BC7F7C" />
-          <div>{eventLength}</div>
+          <ClockIcon className="icon--sm" color="accent-3" />
+          <p>{eventHours}</p>
         </div>
       </div>
-      <EventDetailsButton url="/dashboard" />
+      <div className="event__card__action">
+        Event Details
+        <Link href={eventUrl} passHref>
+          <a className="event__card__btn">
+            <ChevronLeftIcon color="gray-50" />
+          </a>
+        </Link>
+      </div>
     </div>
   );
 };
