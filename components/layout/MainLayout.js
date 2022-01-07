@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Banner from "../banner";
 import MainHeader from "../header/MainHeader";
 import Footer from "../footer/Footer";
