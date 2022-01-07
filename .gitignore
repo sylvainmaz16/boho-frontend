@@ -8,7 +8,6 @@
 /node_modules
 /.pnp
 .pnp.js
-/testdata
 /pages/test-icons
 # testing
 /coverage
