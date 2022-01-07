@@ -1,29 +1,27 @@
-import EventList from "@/page-components/events/EventList";
-
 import React from "react";
+import EventsList from "@/page-components/events/EventList";
+import { getRandomUser } from "@/testdata/*";
+import EmptyEvents from "@/page-components/events/EmptyEvent";
+import MainLayout from "@/components/layout/MainLayout";
 
-export const YourEvents = ({ events, pageData, userData }) => {
+const MyEvents = ({ user }) => {
+  const events = user.myEvents;
   return (
-    <div className="event_layout">
-      {pageData}
-      <EventList userDate={userData || null} events={false} />
+    <div className="wrapper-90">
+      <h1>Your Upcoming Events</h1>
+      {events ? <EventsList events={events} /> : <EmptyEvents />}
     </div>
   );
 };
 
-export default YourEvents;
-
-export const getServerSideProps = async () => {
-  return {
-    props: {
-      events: [
-        {
-          eventTitle: "The Bake off",
-          eventContent: "this is the event content",
-        },
-      ],
-      pageData: "this is page data",
-      userData: null,
-    },
-  };
+MyEvents.getLayout = function getLayout(page) {
+  return <MainLayout>{page}</MainLayout>;
 };
+
+export async function getStaticProps() {
+  const user = await getRandomUser();
+
+  return { props: { user: user } };
+}
+
+export default MyEvents;
