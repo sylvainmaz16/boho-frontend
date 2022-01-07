@@ -104,7 +104,7 @@ const fetchWrapper = async (endpoint, {
     try {
       //   const reAuth = await fetch("http://localhost:5050/api/token/refresh/", {
       const reAuth = await fetch(
-        "http://localhost:5000/dj-rest-auth/token/refresh/",
+        `${baseURL}/dj-rest-auth/token/refresh/`,
         {
           method: "POST",
           mode: "cors",
