@@ -6,8 +6,7 @@ import Footer from "../footer/Footer";
 const MainLayout = ({ children }) => {
   //TODO: hook it up to user status
   const [bannerVisible, setBannerVisible] = useState(false);
-  // TODO remove later
-  setBannerVisible(bannerVisible);
+
   return (
     <>
       <Banner content="Test Content" visible={bannerVisible} />
