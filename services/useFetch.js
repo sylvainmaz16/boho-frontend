@@ -1,6 +1,6 @@
 // this takes a plain object and wraps it as though it's a fetch() response
 
-const baseURL = process.env.NEXT_PUBLIC_BASE_CMS;
+const baseURL = process.env.NEXT_PUBLIC_BASE_CMS || "https://boho-cms-staging.dev";
 const responsify = (errData) => {
   return {
     json() {
