@@ -1,4 +1,4 @@
-import EventList from "../../components/page-components/events/EventList";
+import EventList from "@/page-components/events/EventList";
 
 import React from "react";
 
@@ -22,7 +22,7 @@ export const getServerSideProps = async () => {
           eventContent: "this is the event content",
         },
       ],
-      pageData: 'this is page data',
+      pageData: "this is page data",
       userData: null,
     },
   };
