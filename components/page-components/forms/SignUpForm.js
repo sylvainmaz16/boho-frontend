@@ -61,7 +61,7 @@ const SignupForm = ({ setError, setVisible }) => {
           setError(msg?.error);
           setVisible(true);
         } catch (err) {
-          console.error(err)
+          console.error(err);
           setError("Error retrieving data from response");
           setVisible(true);
         }

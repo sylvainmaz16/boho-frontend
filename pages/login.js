@@ -82,7 +82,7 @@ const Login = ({ pageData }) => {
 };
 
 export async function getStaticProps() {
-  const pageStatus = await fetchPage("pages.AuthPage")
+  const pageStatus = await fetchPage("pages.AuthPage");
 
   let pageData;
   if (pageStatus.status === 200) {

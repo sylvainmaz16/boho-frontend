@@ -1,6 +1,6 @@
-import Onboarding from '~/components/page-components/onboarding/Onboarding';
-import fetchWrapper, { fetchPage } from '~/services/useFetch';
-import { pageFilter } from '~/services/cms/pages';
+import Onboarding from "~/components/page-components/onboarding/Onboarding";
+import fetchWrapper, { fetchPage } from "~/services/useFetch";
+import { pageFilter } from "~/services/cms/pages";
 
 const OnboardingJoin = ({ pageData, userData }) => {
   return (
@@ -15,7 +15,7 @@ const OnboardingJoin = ({ pageData, userData }) => {
   );
 };
 
-export async function getServerSideProps({ req, res }) {
+export async function getServerSideProps() {
   const pageStatus = await fetchPage("pages.OnboardingPage");
 
   let pageData;
