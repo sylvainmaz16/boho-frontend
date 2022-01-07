@@ -1,7 +1,7 @@
 import RightContent from "../components/page-components/landing/RightContent";
 import LeftContent from "../components/page-components/landing/LeftContent";
 import LandingHeader from "../components/header/LandingHeader";
-import fetchWrapper, { fetchPage } from "../services/useFetch";
+import { fetchPage } from "../services/useFetch";
 import { pageFilter } from "../services/cms/pages";
 
 const LandingPage = ({ pageData }) => {

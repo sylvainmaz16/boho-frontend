@@ -30,8 +30,8 @@ const Signup = ({ pageData }) => {
       last_name: response?.profileObj?.familyName,
     };
 
-    const responseAPI = await fetchWrapper('/api/login/google', {
-      method: 'POST',
+    const responseAPI = await fetchWrapper("/api/login/google", {
+      method: "POST",
       data: postData
     });
 
@@ -56,7 +56,7 @@ const Signup = ({ pageData }) => {
       <div className="wrapper-form">
         <AuthHeader pageData={pageData ? pageData[0] : null} />
         <GoogleLogin
-          clientId='584643384358-ck6a8dph9o5dnf7fm8jjtere9s02s4c7.apps.googleusercontent.com'
+          clientId="584643384358-ck6a8dph9o5dnf7fm8jjtere9s02s4c7.apps.googleusercontent.com"
           render={(renderProps) => (
             <GoogleButton
               content="Signup with Google"
@@ -66,7 +66,7 @@ const Signup = ({ pageData }) => {
           buttonText="Login"
           onSuccess={positiveResponseGoogle}
           onFailure={positiveResponseGoogle}
-          cookiePolicy={'single_host_origin'}
+          cookiePolicy={"single_host_origin"}
         />
         <AuthDivider />
         <ErrorMessage

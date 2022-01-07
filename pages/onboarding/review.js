@@ -1,6 +1,6 @@
-import Onboarding from '../../components/page-components/onboarding/Onboarding';
-import fetchWrapper, { fetchPage } from '../../services/useFetch';
-import { pageFilter } from '../../services/cms/pages';
+import Onboarding from "../../components/page-components/onboarding/Onboarding";
+import fetchWrapper, { fetchPage } from "../../services/useFetch";
+import { pageFilter } from "../../services/cms/pages";
 
 const OnboardingReview = ({ pageData, userData }) => {
   console.log(userData);
@@ -16,7 +16,7 @@ const OnboardingReview = ({ pageData, userData }) => {
   );
 };
 
-export async function getServerSideProps({ req, res }) {
+export async function getServerSideProps() {
   const pageStatus = await fetchPage("pages.OnboardingPage");
 
   let pageData;

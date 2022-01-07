@@ -1,6 +1,6 @@
 // this takes a plain object and wraps it as though it's a fetch() response
 
-const baseURL = process.env.NEXT_PUBLIC_BASE_CMS;
+const baseURL = process.env.NEXT_PUBLIC_BASE_CMS || "https://boho-cms-staging.dev";
 const responsify = (errData) => {
   return {
     json() {
@@ -104,7 +104,7 @@ const fetchWrapper = async (endpoint, {
     try {
       //   const reAuth = await fetch("http://localhost:5050/api/token/refresh/", {
       const reAuth = await fetch(
-        "http://localhost:5000/dj-rest-auth/token/refresh/",
+        `${baseURL}/dj-rest-auth/token/refresh/`,
         {
           method: "POST",
           mode: "cors",
