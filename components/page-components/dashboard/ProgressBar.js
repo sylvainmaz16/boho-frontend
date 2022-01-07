@@ -1,15 +1,13 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-// I want to add a loading state to this based on user progress.
-// not sure what the status will be based on though so on define couple styles cams-??
 export const ProgressBar = () => {
   const [bar, setBar] = useState({
     value: 0,
     isLoading: false,
   });
 
-  const handleLoading = (e) => {
+  const handleLoading = () => {
     setBar({
       ...bar,
       value: bar.value + 10,

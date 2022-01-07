@@ -46,3 +46,89 @@ from the creators of Next.js.
 Check out our
 [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more
 details.
+
+<br />
+
+## A Reference of All the Icons.
+
+## ![Tux, the Linux mascot](public/images/IconRef.png)
+
+Be aware the I used module path alias to export these Icons So to import the
+Icons use object destructuring and import from:
+
+```jsx
+import { IconName } from "@/icons/*";
+
+export const MyComponent = () => {
+  return (
+    <div>
+      <IconName />
+    </div>
+  );
+};
+```
+
+## Props: {className, color}
+
+#### **expected classNames:**
+
+- `icon--sm`
+- `icon--lg`
+- `icon--xl`
+
+#### **color names**
+
+- `"gray-50"`: #fafcfc;
+- `"gray-100"`: #eaefef;
+- `"gray-200"`: #e0e5e5;
+- `"gray-300"`: #abb2b2;
+- `"gray-400"`: #7a8080;
+- `"gray-500"`: #2f3333;
+- `"gray-600"`: #0d0e0e;
+
+- `"accent-dark"`: #67605f;
+- `"accent-primary"`: #aa4d2e;
+- `"accent-3"`: #bc7f7c;
+- `"accent-4"`: #ddcdc5;
+
+- `"edit"`: #3db2ff;
+- `"success"`: #9df2b0;
+- `"error"`: #ff3636;
+- `"error"`-light: #ff5555;
+- `"warning"`: #ffb900;
+- `"warning"`-dark: #d69b00;
+
+## All Icon Components
+
+- `<SearchIcon />`
+- `<PhoneIcon />`
+- `<CalenderIcon />`
+- `<ClockIcon />`
+- `<LockIcon />`
+- `<UserIcon />`
+- `<EmailIcon />`
+- `<ViewIcon />`
+- `<MenuIcon />`
+- `<FilterIcon />`
+- `<SyncIcon />`
+- `<DownloadIcon />`
+- `<DeleteIcon />`
+- `<CheckIcon />`
+- `<WaitListIcon />`
+- `<ImageIcon />`
+- `<MessagesIcon />`
+- `<ChevronRightIcon />`
+- `<ChevronLeftIcon />`
+- `<BackArrow />`
+- `<PlusIcon />`
+- `<CloseIcon />`
+- `<OofIcon />`
+- `<EventIcon />`
+- `<LocationIcon />`
+- `<BoothIcon />`
+- `<HelpIcon />`
+- `<CategoryIcon />`
+- `<BroadcastIcon />`
+- `<InvoiceIcon />`
+- `<TodoListIcon />`
+- ` ChatIcon />`
