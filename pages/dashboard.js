@@ -1,6 +1,6 @@
 import MainLayout from "../components/layout/MainLayout";
 import EventList from "@/page-components/events/EventList";
-import getAllEvents, { getLimitedEvents, getRandomUser } from "@/testdata/*";
+import { getLimitedEvents, getRandomUser } from "@/testdata/*";
 import DashBoardHead from "@/components/page-components/dashboard/DashBoardHead";
 import Head from "next/head";
 
