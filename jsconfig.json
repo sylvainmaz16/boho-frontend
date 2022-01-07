@@ -7,7 +7,13 @@
       ],
       "@/icons/*": [
         "components/page-components/icons.js"
-      ]
+      ],
+      "@/testdata/*": ["testdata/data.js"],
+      "@/page-components/*":["components/page-components/*"],
+      "@/buttons/*": ["components/buttons/*"]
     }
-  }
+  },
+  "exclude": ["node_modules/*"]
 }
+
+// jsconfig may have a syntax error, not sure why but it won't mess with anything
