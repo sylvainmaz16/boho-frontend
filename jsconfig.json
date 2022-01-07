@@ -2,7 +2,17 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./*"]
+      "~/*": ["./*"],
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/icons/*": [
+        "components/page-components/icons.js"
+      ],
+      "@/testdata/*": ["testdata/data.js"],
+      "@/page-components/*":["components/page-components/*"],
+      "@/buttons/*": ["components/buttons/*"]
     }
-  }
+  },
+  "exclude": ["node_modules/*"]
 }

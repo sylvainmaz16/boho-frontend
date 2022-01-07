@@ -1,37 +1,24 @@
-import React from "react";
-import BrownButton from "../../buttons/BrownButton";
-import { EventContent } from "./EventContent";
+import EventCard from "./EventCard";
 
-const EventList = ({ events }) => {
+export const EventDashBoardList = ({ events }) => {
   return (
-    <div className="event_container">
-      {events ? (
-        events.map((event) => {
-          <EventContent
-            eventImage={false}
-            title={event.eventTitle}
-            content={event.content}
-          />;
-        })
-      ) : (
-        <EventContent
-
-          EventImage={false}
-          EventTitle={'No Events Yet? Explore Events'}
-
-          EventContent={
-            "You don't have events history, because you didn’t apply for any events yet. Explore our upcoming events to connect with our family and sell your products"
-          }
-        />
-      )}
-      <BrownButton
-        paddingLeftRight="100"
-        content="Explore Events"
-        link="/events/upcoming-events"
-        maxWidth="500px"
-      />
+    <div className="event_list">
+      {events.map((event, idx) => {
+        return (
+          <EventCard
+            key={idx}
+            eventImage={event.image_url}
+            eventName={event.name}
+            eventStart={event.start}
+            eventEnd={event.end}
+            eventHours={event.hours}
+            eventLocation={event.location}
+            eventUrl={event.details_url}
+          />
+        );
+      })}
     </div>
   );
 };
 
-export default EventList;
+export default EventDashBoardList;

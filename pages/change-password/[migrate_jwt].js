@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import MigrateForm from '../../components/page-components/forms/MigrateForm';
-import AuthHeader from '../../components/page-components/auth/AuthHeader';
-import ErrorMessage from '../../components/error/ErrorMessage';
-import fetchWrapper, { fetchPage } from '../../services/useFetch';
-import { pageFilter } from '../../services/cms/pages';
+import { useState, useEffect } from "react";
+import MigrateForm from "../../components/page-components/forms/MigrateForm";
+import AuthHeader from "../../components/page-components/auth/AuthHeader";
+import ErrorMessage from "../../components/error/ErrorMessage";
+import fetchWrapper, { fetchPage } from "../../services/useFetch";
+import { pageFilter } from "../../services/cms/pages";
 
 const Migrate = ({ pageData }) => {
   const [error, setError] = useState();
