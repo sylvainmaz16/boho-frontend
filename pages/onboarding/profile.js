@@ -1,7 +1,6 @@
-import Onboarding from "../../components/page-components/onboarding/Onboarding";
-import fetchWrapper from "../../services/useFetch";
-import { pageFilter } from "../../services/cms/pages";
-import { serverCookieSet, serverCookieGet } from "../../services/cookies";
+import Onboarding from '~/components/page-components/onboarding/Onboarding';
+import fetchWrapper, { fetchPage } from '~/services/useFetch';
+import { pageFilter } from '~/services/cms/pages';
 
 const OnboardingProfile = ({ pageData, userData }) => {
   console.log(userData);
@@ -18,44 +17,22 @@ const OnboardingProfile = ({ pageData, userData }) => {
 };
 
 export async function getServerSideProps({ req, res }) {
-  const user = serverCookieGet(req, res);
-
-  const pageStatus = await fetchWrapper(
-    process.env.NEXT_PUBLIC_BASE_CMS,
-    "",
-    "GET",
-    user,
-    true,
-    null,
-    "pages.OnboardingPage",
-  );
+  const pageStatus = await fetchPage("pages.OnboardingPage");
 
   let pageData;
-  if (pageStatus.tokenAuth) {
-    serverCookieSet(req, res, pageStatus.tokenAuth);
-  }
-  if (pageStatus.returnData.status === 200) {
-    const pageTemp = await pageStatus.returnData.json();
+  if (pageStatus.status === 200) {
+    const pageTemp = await pageStatus.json();
     pageData = await pageFilter(pageTemp, "onboarding p1profile");
   }
 
-  const userStatus = await fetchWrapper(
-    process.env.NEXT_PUBLIC_BASE_CMS,
-    "/api/user/onboarding",
-    "GET",
-    user,
-    true,
-    null,
-    null,
-  );
-
-  if (userStatus.tokenAuth) {
-    serverCookieSet(req, res, userStatus.tokenAuth);
-  }
+  const userStatus = await fetchWrapper("/api/user/onboarding", {
+    mode: "cors",
+    credentials: "include"
+  });
 
   let userData;
-  if (userStatus.returnData.status === 200) {
-    userData = await userStatus.returnData.json();
+  if (userStatus.status === 200) {
+    userData = await userStatus.json();
   }
 
   return {

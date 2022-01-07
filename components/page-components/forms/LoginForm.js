@@ -29,9 +29,9 @@ const LoginForm = ({ setError, setVisible }) => {
         setVisible(true);
       } else if (isValid.success) {
         const response = await login(data);
-        if (response.returnData.status === 200) {
-          const data = await response.returnData.json();
-          console.log(data);
+        if (response.status === 200) {
+          const data = await response.json();
+
           clientCookieSet({
             access: data.access_token,
             refresh: data.refresh_token,
@@ -40,8 +40,7 @@ const LoginForm = ({ setError, setVisible }) => {
 
           router.push("/dashboard");
         } else {
-          const msg = await response.returnData.json();
-          console.log(msg);
+          const msg = await response.json();
           setError(msg.error);
           setVisible(true);
         }

@@ -1,12 +1,20 @@
-const fetchInside = async (
-  baseURL,
-  endpoint,
-  method,
+// this takes a plain object and wraps it as though it's a fetch() response
+
+const baseURL = process.env.NEXT_PUBLIC_BASE_CMS;
+const responsify = (errData) => {
+  return {
+    json() {
+      return Promise.resolve(errData);
+    }
+  }
+};
+
+const fetchInside = async (endpoint, {
+  method = "GET",
   headers = true,
   data = null,
-  pageType = null,
-  newToken,
-) => {
+  pageType = null
+} = {}) => {
   let initialResponse;
   if (
     (headers === true && method === "POST") ||
@@ -15,42 +23,28 @@ const fetchInside = async (
   ) {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
+      credentials: "include",
+      mode: "cors",
+      body: JSON.stringify(data),
       headers: {
-        Authorization: `Bearer ${newToken}`,
-      },
-      body: new URLSearchParams(data),
+        "Content-Type": "application/json"
+      }
     });
-  } else if (pageType !== null && headers === true) {
-    initialResponse = await fetch(
-      `${baseURL}/api/v2/pages/?type=${pageType}&fields=*`,
-      {
-        method: method,
-        headers: {
-          Authorization: `Bearer ${newToken}`,
-        },
-      },
-    );
-  } else if (pageType !== null && headers !== true) {
-    initialResponse = await fetch(
-      `${baseURL}/api/v2/pages/?type=${pageType}&fields=*`,
-      {
-        method: method,
-      },
-    );
   } else if (headers !== true && method === "POST") {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
-      body: new URLSearchParams(data),
+      mode: "cors",
+      ...(data ? { body: JSON.stringify(data) } : null),
+      headers: {
+        "Content-Type": "application/json"
+      }
     });
-  } else if (headers === true && method === "GET") {
+  } else if (method === "GET") {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
-      headers: {
-        Authorization: `Bearer ${newToken}`,
-      },
+      credentials: "include",
+      mode: "cors"
     });
-  } else if (headers !== true && method === "GET") {
-    initialResponse = await fetch(`${baseURL}${endpoint}`);
   }
 
   let returnData;
@@ -61,74 +55,44 @@ const fetchInside = async (
   ) {
     returnData = initialResponse;
   } else if (initialResponse.status === 401 || initialResponse.status === 403) {
-    returnData = { error: "Oops, something went wrong." };
+    returnData = responsify({ error: "Permission denied" });
   } else {
-    returnData = { error: "Oops, something went wrong." };
+    returnData = responsify({ error: "Oops, something went wrong." });
   }
 
   return returnData;
 };
 
-const fetchWrapper = async (
-  baseURL,
-  endpoint,
-  method,
+const fetchWrapper = async (endpoint, {
+  method = "GET",
   user = null,
   headers = true,
   data = null,
   pageType = null,
   clientCookieSet = null,
   clientCookieDelete = null,
-  serverCookieSet = null,
   req = null,
-  res = null,
-) => {
+  res = null
+} = {}) => {
   let initialResponse;
-  if (
-    (headers === true && method === "POST") ||
-    method === "PUT" ||
-    method === "PATCH"
-  ) {
+  if (method === "POST" || method === "PUT" || method === "PATCH") {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
+      credentials: "include",
+      mode: "cors",
+      ...(data ? { body: JSON.stringify(data) } : null),
       headers: {
-        Authorization: `Bearer ${user?.access}`,
-      },
-      body: new URLSearchParams(data),
+        "Content-Type": "application/json"
+      }
     });
-  } else if (pageType !== null && headers === true) {
-    initialResponse = await fetch(
-      `${baseURL}/api/v2/pages/?type=${pageType}&fields=*`,
-      {
-        method: method,
-        headers: {
-          Authorization: `Bearer ${user?.access}`,
-        },
-      },
-    );
-  } else if (pageType !== null && headers !== true) {
-    initialResponse = await fetch(
-      `${baseURL}/api/v2/pages/?type=${pageType}&fields=*`,
-      {
-        method: method,
-      },
-    );
-  } else if (headers !== true && method === "POST") {
+  } else if (method === "GET") {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
-      body: new URLSearchParams(data),
+      mode: "cors",
+      credentials: "include"
     });
-  } else if (headers === true && method === "GET") {
-    initialResponse = await fetch(`${baseURL}${endpoint}`, {
-      method: method,
-      headers: {
-        Authorization: `Bearer ${user?.access}`,
-      },
-    });
-  } else if (headers !== true && method === "GET") {
-    initialResponse = await fetch(`${baseURL}${endpoint}`);
   }
-  let tokenAuth;
+
   let returnData;
   if (
     initialResponse.status === 200 ||
@@ -140,41 +104,38 @@ const fetchWrapper = async (
     try {
       //   const reAuth = await fetch("http://localhost:5050/api/token/refresh/", {
       const reAuth = await fetch(
-        "http://localhost:5050/dj-rest-auth/token/refresh/",
+        "http://localhost:5000/dj-rest-auth/token/refresh/",
         {
           method: "POST",
-          body: new URLSearchParams({
-            token: user.access,
-            refresh: user.refresh,
-          }),
-        },
+          mode: "cors",
+          credentials: "include"
+        }
       );
 
-      const token = await reAuth.json();
-      tokenAuth = {
-        access: token.access,
-        refresh: user.refresh,
-        isLoggedIn: true,
-      };
-
-      returnData = await fetchInside(
-        baseURL,
+      returnData = await fetchInside(baseURL, {
         endpoint,
         method,
         headers,
         data,
-        pageType,
-        token.access,
-      );
+        pageType
+      });
     } catch (err) {
-      console.log(err);
-      returnData = { error: "Oops, something went wrong." };
+      console.error(err);
+      returnData = responsify({ error: "Error refreshing token" });
     }
   } else {
-    returnData = { error: "Oops, something went wrong." };
+    returnData = initialResponse;
   }
 
-  return { returnData, tokenAuth };
+  return returnData;
 };
+
+export const fetchPage = async (pageType) => {
+  const pageURL = `${baseURL}/api/v2/pages/?type=${pageType}&fields=*`;
+  return await fetch(pageURL, {
+    credentials: "include",
+    mode: "cors"
+  });
+}
 
 export default fetchWrapper;
