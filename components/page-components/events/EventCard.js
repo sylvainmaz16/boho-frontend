@@ -30,17 +30,17 @@ export const EventCard = ({
       <div className="event__card__content">
         <h4>{eventName}</h4>
         <div>
-          <LocationIcon color="accent-3" />
+          <LocationIcon color="accent-light" />
           <p className="font-xl-bold">{eventLocation}</p>
         </div>
         <div>
-          <CalenderIcon color="accent-3" />
+          <CalenderIcon color="accent-light" />
           <p>
             From {eventStart} to {eventEnd}
           </p>
         </div>
         <div>
-          <ClockIcon className="icon--sm" color="accent-3" />
+          <ClockIcon className="icon--sm" color="accent-light" />
           <p>{eventHours}</p>
         </div>
       </div>
@@ -48,7 +48,7 @@ export const EventCard = ({
         Event Details
         <Link href={eventUrl} passHref>
           <a className="event__card__btn">
-            <ChevronLeftIcon color="gray-50" />
+            <ChevronLeftIcon color="white" />
           </a>
         </Link>
       </div>
