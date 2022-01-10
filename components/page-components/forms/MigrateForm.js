@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AuthInputs from "./AuthInputs";
+import AuthInputs from "./components/AuthInputs";
 import BrownSubmit from "../../buttons/BrownSubmit";
 import { migrateValidation } from "../../../services/validation/authValidation";
 import { useRouter } from "next/router";
@@ -29,8 +29,8 @@ const MigrateForm = ({ setError, setVisible }) => {
         setVisible(true);
       } else if (isValid.success) {
         const response = await migrate(data);
-        if (response.returnData.status === 201) {
-          const data = await response.returnData.json();
+        if (response.status === 201) {
+          const data = await response.json();
           clientCookieSet(data.access_token, data.refresh_token, true);
 
           router.push("/onboarding/profile");
@@ -64,7 +64,7 @@ const MigrateForm = ({ setError, setVisible }) => {
         placeholder="Password"
         pattern={
           new RegExp(
-            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/i
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/i,
           )
         }
       />
@@ -79,7 +79,7 @@ const MigrateForm = ({ setError, setVisible }) => {
         placeholder="Confirm Password"
         pattern={
           new RegExp(
-            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/i
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/i,
           )
         }
       />

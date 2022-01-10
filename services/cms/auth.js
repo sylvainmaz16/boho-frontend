@@ -1,40 +1,25 @@
 import fetchWrapper from "../useFetch";
 
-export const signup = (data) => {
-  const response = fetchWrapper(
-    process.env.NEXT_PUBLIC_BASE_CMS,
-    "/dj-rest-auth/registration/",
-    "POST",
-    null,
-    false,
-    data,
-    null
-  );
+export const signup = async (data) => {
+  const response = await fetchWrapper("/dj-rest-auth/registration/", {
+    method: "POST",
+    data
+  }).catch(err => console.error(err));
   return response;
 };
 
 export const login = (data) => {
-  const response = fetchWrapper(
-    process.env.NEXT_PUBLIC_BASE_CMS,
-    "/api/login",
-    "POST",
-    null,
-    false,
-    data,
-    null
-  );
+  const response = fetchWrapper("/api/login", {
+    method: "POST",
+    data
+  });
   return response;
 };
 
 export const migrate = (data) => {
-  const response = fetchWrapper(
-    process.env.NEXT_PUBLIC_BASE_CMS,
-    "/api/migrate",
-    "POST",
-    null,
-    false,
-    data,
-    null
-  );
+  const response = fetchWrapper("/api/migrate", {
+    method: "POST",
+    data
+  });
   return response;
 };

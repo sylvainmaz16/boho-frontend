@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import MainNavComponent from "./MainNavComponent";
 import DropdownArrow from "./DropdownArrow";
@@ -25,7 +25,11 @@ const MainNav = () => {
   return (
     <div className="main-nav">
       <MainNavComponent path={path} link="/dashboard" content="Dashboard" />
-      <MainNavComponent path={path} link="" content="Upcoming Events" />
+      <MainNavComponent
+        path={path}
+        link="/upcoming-events"
+        content="Upcoming Events"
+      />
       <MainNavComponent path={path} link="" content="My Account" />
       <div
         ref={ref}

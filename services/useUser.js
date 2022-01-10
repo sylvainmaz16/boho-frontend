@@ -6,7 +6,10 @@ export default function useUser({
   redirectTo = "",
   redirectIfFound = false,
 } = {}) {
-  const { data: user, mutate: mutateUser } = useSWR("/api/user");
+  const { data: user, mutate: mutateUser } = useSWR("/api/user", {
+    mode: "cors",
+    credentials: "include"
+  });
 
   useEffect(() => {
     // if no redirect needed, just return (example: already on /dashboard)

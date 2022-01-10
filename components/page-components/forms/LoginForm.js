@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AuthInputs from "./AuthInputs";
+import AuthInputs from "./components/AuthInputs";
 import { useRouter } from "next/router";
 import BrownSubmit from "../../buttons/BrownSubmit";
 import { loginValidation } from "../../../services/validation/authValidation";
@@ -29,6 +29,7 @@ const LoginForm = ({ setError, setVisible }) => {
         setVisible(true);
       } else if (isValid.success) {
         const response = await login(data);
+        console.log(response);
         if (response.returnData.status === 200) {
           const data = await response.returnData.json();
           console.log(data);
@@ -40,8 +41,7 @@ const LoginForm = ({ setError, setVisible }) => {
 
           router.push("/dashboard");
         } else {
-          const msg = await response.returnData.json();
-          console.log(msg);
+          const msg = await response.json();
           setError(msg.error);
           setVisible(true);
         }

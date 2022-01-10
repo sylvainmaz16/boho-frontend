@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import ErrorMessage from "../../error/ErrorMessage";
+// import { useState, useEffect } from "react";
+// import ErrorMessage from "../../error/ErrorMessage";
 import Content from "./Content";
 import CircleLink from "./CircleLinks";
 import BrownButton from "../../buttons/BrownButton";

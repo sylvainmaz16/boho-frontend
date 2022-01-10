@@ -1,0 +1,21 @@
+{
+  "name": "next-frontend",
+  "dependencies": {
+    "@reduxjs/toolkit": { "version": "1.6.2" },
+    "cookie-cutter": { "version": "0.2.0" },
+    "iron-session": { "version": "6.0.3" },
+    "js-cookie": { "version": "3.0.1" },
+    "lodash": { "version": "4.17.21" },
+    "next-redux-wrapper": { "version": "7.0.5" },
+    "next": { "version": "12.0.4" },
+    "react-cool-onclickoutside": { "version": "1.7.0" },
+    "react-dom": { "version": "17.0.2" },
+    "react-google-login": { "version": "5.2.2" },
+    "react-redux": { "version": "7.2.6" },
+    "react": { "version": "17.0.2" },
+    "redux-devtools-extension": { "version": "2.13.9" },
+    "redux-thunk": { "version": "2.4.1" },
+    "redux": { "version": "4.1.2" },
+    "swr": { "version": "1.0.1" }
+  }
+}

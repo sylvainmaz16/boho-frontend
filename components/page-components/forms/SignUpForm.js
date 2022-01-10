@@ -1,7 +1,7 @@
 import { useState } from "react";
-import AuthInputs from "./AuthInputs";
-import CheckboxRegular from "./CheckboxRegular";
-import CheckboxRegularPrivacy from "./CheckboxRegularPrivacy";
+import AuthInputs from "./components/AuthInputs";
+import CheckboxRegular from "./components/CheckboxRegular";
+import CheckboxRegularPrivacy from "./components/CheckboxRegularPrivacy";
 import BrownSubmit from "../../buttons/BrownSubmit";
 import { signupValidation } from "../../../services/validation/authValidation";
 import { useRouter } from "next/router";
@@ -47,12 +47,13 @@ const SignupForm = ({ setError, setVisible }) => {
       const response = await signup(fullData);
       // const data = await response.json();
 
-      if (response.returnData.status === 201) {
-        const data = await response.returnData.json();
-        console.log(data);
-        console.log(data.refresh_token);
-        clientCookieSet(data.access_token, data.refresh_token, true);
-
+      if (response?.status === 201) {
+        const data = await response.json();
+        clientCookieSet({
+          access: data.access_token,
+          refresh: data.refresh_token,
+          isLoggedIn: true,
+        });
         router.push("/onboarding/profile");
       } else {
         try {
@@ -60,15 +61,12 @@ const SignupForm = ({ setError, setVisible }) => {
           setError(msg?.error);
           setVisible(true);
         } catch (err) {
-          setError("Oops, something went wrong.");
+          console.error(err);
+          setError("Error retrieving data from response");
           setVisible(true);
         }
       }
     }
-    // } catch (err) {
-    //   setError(err.error || "Oops, something went wrong.");
-    //   setVisible(true);
-    // }
   };
 
   return (
@@ -128,7 +126,7 @@ const SignupForm = ({ setError, setVisible }) => {
         placeholder="Password"
         pattern={
           new RegExp(
-            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/i
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/i,
           )
         }
       />
@@ -143,7 +141,7 @@ const SignupForm = ({ setError, setVisible }) => {
         placeholder="Confirm Password"
         pattern={
           new RegExp(
-            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/i
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/i,
           )
         }
       />

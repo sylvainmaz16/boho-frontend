@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SignupForm from "../components/page-components/forms/SignUpForm";
 import AuthHeader from "../components/page-components/auth/AuthHeader";
 import GoogleButton from "../components/buttons/GoogleButton";
 import AuthDivider from "../components/page-components/auth/AuthDivider";
 import ErrorMessage from "../components/error/ErrorMessage";
 import Redirect from "../components/page-components/auth/Redirect";
-import fetchWrapper from "../services/useFetch";
+import fetchWrapper, { fetchPage } from "../services/useFetch";
 import { pageFilter } from "../services/cms/pages";
 import GoogleLogin from "react-google-login";
 import { clientCookieSet } from "../services/cookies";
@@ -18,33 +18,30 @@ const Signup = ({ pageData }) => {
   const router = useRouter();
 
   const positiveResponseGoogle = async (response) => {
-    const data = {
+    if (response.error) {
+      setError("Something went wrong, please try again in a moment.");
+    }
+
+    const postData = {
       access_token: response.accessToken,
       id_token: response.idToken,
-      email: response.profileObj.email,
+      email: response.profileObj?.email,
       first_name: response?.profileObj?.givenName,
       last_name: response?.profileObj?.familyName,
     };
 
-    const responseAPI = await fetchWrapper(
-      process.env.NEXT_PUBLIC_BASE_CMS,
-      "/api/login/google",
-      "POST",
-      null,
-      false,
-      data,
-      null
-    );
+    const responseAPI = await fetchWrapper("/api/login/google", {
+      method: "POST",
+      data: postData
+    });
 
-    if (responseAPI.returnData.status === 200) {
-      const data = await responseAPI.returnData.json();
+    const data = await responseAPI.json();
+    if (responseAPI.status === 200) {
       clientCookieSet(data.access_token, data.refresh_token, true);
-      console.log(window.location.pathname);
-
       router.push("/onboarding/profile");
     } else {
       try {
-        const msg = await response?.json();
+        const msg = await responseAPI?.json();
         setError(msg?.error);
         setVisible(true);
       } catch (err) {
@@ -59,7 +56,7 @@ const Signup = ({ pageData }) => {
       <div className="wrapper-form">
         <AuthHeader pageData={pageData ? pageData[0] : null} />
         <GoogleLogin
-          clientId="698856264513-b8rl7o427e166fqp5rcu3hm6vqfkv212.apps.googleusercontent.com"
+          clientId="584643384358-ck6a8dph9o5dnf7fm8jjtere9s02s4c7.apps.googleusercontent.com"
           render={(renderProps) => (
             <GoogleButton
               content="Signup with Google"
@@ -68,6 +65,7 @@ const Signup = ({ pageData }) => {
           )}
           buttonText="Login"
           onSuccess={positiveResponseGoogle}
+          onFailure={positiveResponseGoogle}
           cookiePolicy={"single_host_origin"}
         />
         <AuthDivider />
@@ -88,19 +86,11 @@ const Signup = ({ pageData }) => {
 };
 
 export async function getStaticProps() {
-  const pageStatus = await fetchWrapper(
-    process.env.NEXT_PUBLIC_BASE_CMS,
-    "",
-    "GET",
-    null,
-    false,
-    null,
-    "pages.AuthPage"
-  );
+  const pageStatus = await fetchPage("pages.AuthPage");
 
   let pageData;
-  if (pageStatus.returnData.status === 200) {
-    const pageTemp = await pageStatus.returnData.json();
+  if (pageStatus.status === 200) {
+    const pageTemp = await pageStatus.json();
     pageData = await pageFilter(pageTemp, "signup");
   }
 
