@@ -35,6 +35,6 @@ export const getStaticProps = async () => {
   const events = await getLimitedEvents(3);
 
   return {
-    props: { user: user, events: events },
+    props: { user: user || null, events: events || null },
   };
 };
