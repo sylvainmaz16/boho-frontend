@@ -29,9 +29,10 @@ const LoginForm = ({ setError, setVisible }) => {
         setVisible(true);
       } else if (isValid.success) {
         const response = await login(data);
-        if (response.status === 200) {
-          const data = await response.json();
-
+        console.log(response);
+        if (response.returnData.status === 200) {
+          const data = await response.returnData.json();
+          console.log(data);
           clientCookieSet({
             access: data.access_token,
             refresh: data.refresh_token,
