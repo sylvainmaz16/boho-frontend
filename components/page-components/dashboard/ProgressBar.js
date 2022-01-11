@@ -7,12 +7,14 @@ export const ProgressBar = () => {
     isLoading: false,
   });
 
-  const handleLoading = () => {
-    setBar({
-      ...bar,
-      value: bar.value + 10,
-    });
-  };
+  console.log(setBar);
+
+  // const handleLoading = () => {
+  //   setBar({
+  //     ...bar,
+  //     value: bar.value + 10,
+  //   });
+  // };
 
   return (
     <div className="progress_bar_container">
