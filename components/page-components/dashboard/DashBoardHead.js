@@ -7,6 +7,7 @@ export const DashBoardHead = ({ name, children }) => {
     <div className="wrapper-90">
       <div className="dashboard__head">
         <h2>Welcome, {name}</h2>
+
         <ProgressBar />
       </div>
       <div className="dashboard__content">

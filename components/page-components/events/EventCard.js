@@ -45,7 +45,7 @@ export const EventCard = ({
         </div>
       </div>
       <div className="event__card__action">
-        Event Details
+        View Event Details
         <Link href={eventUrl} passHref>
           <a className="event__card__btn">
             <ChevronLeftIcon color="white" />
