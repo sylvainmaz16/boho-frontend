@@ -9,7 +9,7 @@
       "@/icons/*": [
         "components/page-components/icons.js"
       ],
-      "@/middleware/*": ["z-middleware/data.js"],
+      "@/middleware/*": ["z-middleware/*"],
       "@/page-components/*":["components/page-components/*"],
       "@/buttons/*": ["components/buttons/*"]
     }
