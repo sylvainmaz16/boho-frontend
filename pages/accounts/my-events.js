@@ -21,7 +21,7 @@ MyEvents.getLayout = function getLayout(page) {
 export async function getStaticProps() {
   const user = await getRandomUser();
 
-  return { props: { user: user } };
+  return { props: { user: user || null } };
 }
 
 export default MyEvents;
