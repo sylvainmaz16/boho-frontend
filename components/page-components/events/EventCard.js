@@ -30,11 +30,11 @@ export const EventCard = ({
       <div className="event__card__content">
         <h4>{eventName}</h4>
         <div>
-          <LocationIcon color="accent-light" />
+          <LocationIcon className="icon--sm" color="accent-light" />
           <p className="font-xl-bold">{eventLocation}</p>
         </div>
         <div>
-          <CalendarIcon color="accent-light" />
+          <CalendarIcon className="icon--sm" color="accent-light" />
           <p>
             From {eventStart} to {eventEnd}
           </p>

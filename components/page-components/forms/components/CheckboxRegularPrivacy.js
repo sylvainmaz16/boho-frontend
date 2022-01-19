@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
+import { CheckBoxIcon } from "@/icons/*";
 
-const CheckboxRegular = ({ value, setValue, htmlFor, required = false }) => {
+const CheckboxRegular = ({ value, setValue, htmlFor }) => {
   return (
     <div className="checkbox__regularContainer">
       <label
@@ -9,18 +9,16 @@ const CheckboxRegular = ({ value, setValue, htmlFor, required = false }) => {
         htmlFor={htmlFor}
       >
         {value ? (
-          <Image
-            src="https://res.cloudinary.com/dkceblkn7/image/upload/v1640912659/boho%20vendor%20assets/Group_157_ajnkod.svg"
-            alt="checked"
-            width="32"
-            height="32"
+          <CheckBoxIcon
+            className="icon--xs checkbox--checked"
+            color="white"
+            onClick={() => setValue(!value)}
           />
         ) : (
-          <Image
-            src="https://res.cloudinary.com/dkceblkn7/image/upload/v1640912717/boho%20vendor%20assets/Group_157_1_ivsyso.svg"
-            alt="not checked"
-            width="32"
-            height="32"
+          <CheckBoxIcon
+            className="icon--xs checkbox--unchecked"
+            color="white"
+            onClick={() => setValue(!value)}
           />
         )}
 
@@ -28,8 +26,7 @@ const CheckboxRegular = ({ value, setValue, htmlFor, required = false }) => {
           name="newsletter"
           className="checkbox__regularCheckbox"
           type="checkbox"
-          onClick={() => setValue(!value)}
-          required={required}
+          required
         />
         <p>
           I agree to the <Link href="/privacy-policy">privacy policy</Link> and{" "}
