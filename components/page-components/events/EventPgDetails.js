@@ -1,12 +1,12 @@
 import { CalendarIcon, ClockIcon, LocationIcon, ChevronDown } from "@/icons/*";
 import Link from "next/link";
 import { useState } from "react";
-import Map from "../../../z-middleware/map";
+import Map from "@/middleware/map";
 
 const EventPgDetails = ({ start, end, venue_id, dates }) => {
   const [spinner, setSpinner] = useState(false);
   const venue = venue_id[0];
-  
+
   const XM = (time) => {
     let newTime = new Date(time);
     let hrs = newTime.getHours() - 12;

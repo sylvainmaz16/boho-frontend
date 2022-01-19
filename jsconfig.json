@@ -11,7 +11,7 @@
       ],
       "@/middleware/*": ["z-middleware/*"],
       "@/page-components/*":["components/page-components/*"],
-      "@/buttons/*": ["components/buttons/*"]
+      "@/buttons/*": ["components/buttons/*"],
     }
   },
   "exclude": ["node_modules/*"]
