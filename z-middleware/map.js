@@ -1,31 +1,31 @@
 import { useEffect, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 
-const Map = ({ gKey }) => {
+const Map = ({ gKey, gps }) => {
   const gmap = useRef(null);
-
   useEffect(() => {
     const loader = new Loader({
-      apiKey: gKey,
+      apiKey: process.env.NEXT_PUBLIC_BOHO_GMAPS_KEY,
       version: "weekly",
     });
 
     let map;
     let marker;
+    let geocoder;
 
     loader.load().then(() => {
       const google = window.google;
       map = new google.maps.Map(gmap.current, {
         center: {
-          lat: 39.5582834811288,
-          lng: -119.03217153636068,
+          lat: +gps[0],
+          lng: +gps[1],
         },
         zoom: 15,
       });
       marker = new google.maps.Marker({
         position: {
-          lat: 39.5582834811288,
-          lng: -119.03217153636068,
+          lat: +gps[0],
+          lng: +gps[1],
         },
         map,
         title: "Shop Here",
