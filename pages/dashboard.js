@@ -17,7 +17,7 @@ const Dashboard = ({ user, events }) => {
         <meta name="robots" content="index, follow" />
         <meta name="rating" content="14 years" />
       </Head>
-      <DashBoardHead name={user.first_name}>
+      <DashBoardHead name={user?.first_name}>
         <EventList events={events} />
       </DashBoardHead>
     </>
