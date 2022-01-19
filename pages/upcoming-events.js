@@ -1,4 +1,4 @@
-import { getLimitedEvents } from "@/testdata/*";
+import { getLimitedEvents } from "@/middleware/data";
 import EventList from "@/page-components/events/EventList";
 import MainLayout from "../components/layout/MainLayout";
 import React from "react";

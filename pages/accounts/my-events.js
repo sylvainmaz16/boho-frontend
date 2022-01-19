@@ -1,6 +1,6 @@
 import React from "react";
 import EventsList from "@/page-components/events/EventList";
-import { getRandomUser } from "@/testdata/*";
+import { getRandomUser } from "@/middleware/data";
 import EmptyEvents from "@/page-components/events/EmptyEvent";
 import MainLayout from "@/components/layout/MainLayout";
 

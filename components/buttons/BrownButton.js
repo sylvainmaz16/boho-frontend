@@ -1,6 +1,13 @@
 import Link from "next/link";
 
-const BrownButton = ({ paddingLeftRight, content, link, maxWidth }) => {
+//TODO ask kat if it would be okay to switch this to children in stead of content.
+const BrownButton = ({
+  paddingLeftRight,
+  content,
+  children,
+  link,
+  maxWidth,
+}) => {
   return (
     <Link href={link}>
       <a
@@ -10,7 +17,7 @@ const BrownButton = ({ paddingLeftRight, content, link, maxWidth }) => {
           maxWidth: maxWidth,
         }}
       >
-        {content}
+        {content?.length > 0 ? content : children}
       </a>
     </Link>
   );

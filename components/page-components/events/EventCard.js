@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ClockIcon,
-  CalenderIcon,
+  CalendarIcon,
   LocationIcon,
   ChevronLeftIcon,
 } from "@/icons/*";
@@ -34,7 +34,7 @@ export const EventCard = ({
           <p className="font-xl-bold">{eventLocation}</p>
         </div>
         <div>
-          <CalenderIcon color="accent-light" />
+          <CalendarIcon color="accent-light" />
           <p>
             From {eventStart} to {eventEnd}
           </p>
