@@ -204,6 +204,10 @@ export const getAllEvents = async () => {
   return Data.allEvents;
 };
 
+export const getEventById = async (id) => {
+  return Data.allEvents.find((event) => event.event_id === id);
+};
+
 export const getUserWithEvents = async () => {
   return Data.users.userWithEvents;
 };
