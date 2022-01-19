@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap");
 
 :root {
+  --xs: 1.35rem;
   --sm: 1.8rem;
   --lg: 2.5rem;
   --xl: 3rem;
@@ -113,6 +114,11 @@ h4 {
   transition: all 0.5s;
 
   margin-top: -10rem;
+}
+
+.icon--xs {
+  height: var(--xs);
+  width: var(--xs);
 }
 
 .icon--sm {
@@ -242,6 +248,18 @@ p {
 
 .input:placeholder {
   color: var(--gray-dark);
+}
+
+.checkbox--checked {
+  border: 2px solid var(--accent-primary);
+  background-color: var(--accent-primary);
+  border-radius: 4px;
+}
+
+.checkbox--unchecked {
+  border: 2px solid var(--accent-primary);
+  background-color: var(--white);
+  border-radius: 4px;
 }
 
 .checkbox__regularContainer {
