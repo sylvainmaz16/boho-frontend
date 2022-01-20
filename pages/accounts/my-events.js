@@ -5,7 +5,7 @@ import EmptyEvents from "@/page-components/events/EmptyEvent";
 import MainLayout from "@/components/layout/MainLayout";
 
 const MyEvents = ({ user }) => {
-  const events = user.myEvents;
+  const events = user?.myEvents;
   return (
     <div className="wrapper-90">
       <h1>Your Upcoming Events</h1>
