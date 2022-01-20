@@ -13,8 +13,11 @@ const Onboarding = ({
   linkBack = null,
   linkForward,
   pageData,
-  userData,
+  // userData,
 }) => {
+  console.log(pageData);
+  const userData = { legacy: true };
+  // temporary until userData is fixed
   return (
     <div className="onboarding container">
       <div className="wrapper-form">
