@@ -3,7 +3,7 @@ import fetchWrapper, { fetchPage } from "~/services/useFetch";
 import { pageFilter } from "~/services/cms/pages";
 
 const OnboardingProfile = ({ pageData, userData }) => {
-  console.log(userData);
+  console.log(pageData);
   return (
     <Onboarding
       page={1}
@@ -27,7 +27,7 @@ export async function getServerSideProps() {
 
   const userStatus = await fetchWrapper("/api/user/onboarding", {
     mode: "cors",
-    credentials: "include"
+    credentials: "include",
   });
 
   let userData;
