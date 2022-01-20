@@ -17,7 +17,7 @@ const Onboarding = ({
 }) => {
   console.log(pageData);
   const userData = { legacy: true };
-  // temporary until userData is fixed
+  // temporary until userData is fixed+
   return (
     <div className="onboarding container">
       <div className="wrapper-form">
