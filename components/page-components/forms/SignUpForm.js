@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import { useState } from "react";
 import AuthInputs from "./components/AuthInputs";
 import CheckboxRegular from "./components/CheckboxRegular";
@@ -49,6 +50,8 @@ const SignupForm = ({ setError, setVisible }) => {
 
       if (response?.status === 201) {
         const data = await response.json();
+        Cookies.set("boho-auth", data.access_token);
+        Cookies.set("boho-refresh-token", data.refresh_token);
         clientCookieSet({
           access: data.access_token,
           refresh: data.refresh_token,

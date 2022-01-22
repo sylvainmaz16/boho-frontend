@@ -1,10 +1,11 @@
-import { useState } from "react";
-import AuthInputs from "./components/AuthInputs";
+import Cookies from 'js-cookie';
 import { useRouter } from "next/router";
-import BrownSubmit from "../../buttons/BrownSubmit";
-import { loginValidation } from "../../../services/validation/authValidation";
+import { useState } from "react";
 import { login } from "../../../services/cms/auth";
 import { clientCookieSet } from "../../../services/cookies";
+import { loginValidation } from "../../../services/validation/authValidation";
+import BrownSubmit from "../../buttons/BrownSubmit";
+import AuthInputs from "./components/AuthInputs";
 
 const LoginForm = ({ setError, setVisible }) => {
   const [email, setEmail] = useState();
@@ -30,9 +31,10 @@ const LoginForm = ({ setError, setVisible }) => {
       } else if (isValid.success) {
         const response = await login(data);
         console.log(response);
-        if (response.returnData.status === 200) {
-          const data = await response.returnData.json();
-          console.log(data);
+        if (response.status === 200) {
+          const data = await response.json();
+          Cookies.set("boho-auth", data.access_token);
+          Cookies.set("boho-refresh-token", data.refresh_token);
           clientCookieSet({
             access: data.access_token,
             refresh: data.refresh_token,

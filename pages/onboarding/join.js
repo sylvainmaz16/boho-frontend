@@ -1,6 +1,6 @@
 import Onboarding from "~/components/page-components/onboarding/Onboarding";
-import fetchWrapper, { fetchPage } from "~/services/useFetch";
 import { pageFilter } from "~/services/cms/pages";
+import fetchWrapper, { fetchPage } from "~/services/useFetch";
 
 const OnboardingJoin = ({ pageData, userData }) => {
   return (
@@ -15,7 +15,7 @@ const OnboardingJoin = ({ pageData, userData }) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ req }) {
   const pageStatus = await fetchPage("pages.OnboardingPage");
 
   let pageData;
@@ -26,7 +26,8 @@ export async function getServerSideProps() {
 
   const userStatus = await fetchWrapper("/api/user/onboarding", {
     mode: "cors",
-    credentials: "include"
+    credentials: "include",
+    req
   });
 
   let userData;

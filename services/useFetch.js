@@ -13,7 +13,8 @@ const fetchInside = async (endpoint, {
   method = "GET",
   headers = true,
   data = null,
-  pageType = null
+  pageType = null,
+  req = {}
 } = {}) => {
   let initialResponse;
   if (
@@ -23,11 +24,13 @@ const fetchInside = async (endpoint, {
   ) {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
-      credentials: "include",
       mode: "cors",
       body: JSON.stringify(data),
+      credentials: "include",
+      withCredentials: true,
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Cookie: req?.headers?.cookie
       }
     });
   } else if (headers !== true && method === "POST") {
@@ -35,14 +38,16 @@ const fetchInside = async (endpoint, {
       method: method,
       mode: "cors",
       ...(data ? { body: JSON.stringify(data) } : null),
+      credentials: "include",
+      withCredentials: true,
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Cookie: req?.headers?.cookie
       }
     });
   } else if (method === "GET") {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
-      credentials: "include",
       mode: "cors"
     });
   }
@@ -68,28 +73,36 @@ const fetchWrapper = async (endpoint, {
   user = null,
   headers = true,
   data = null,
-  pageType = null,
+  pageType = null,  
   clientCookieSet = null,
   clientCookieDelete = null,
   req = null,
-  res = null
+  res = null,
+  cookies = "",
 } = {}) => {
   let initialResponse;
   if (method === "POST" || method === "PUT" || method === "PATCH") {
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
-      credentials: "include",
       mode: "cors",
+      credentials: "include",
+      withCredentials: true,
       ...(data ? { body: JSON.stringify(data) } : null),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Cookie: req?.headers?.cookie
       }
     });
   } else if (method === "GET") {
+
     initialResponse = await fetch(`${baseURL}${endpoint}`, {
       method: method,
       mode: "cors",
-      credentials: "include"
+      credentials: "include",
+      withCredentials: true,
+      headers: {
+        Cookie: req?.headers?.cookie
+      },
     });
   }
 
@@ -108,16 +121,25 @@ const fetchWrapper = async (endpoint, {
         {
           method: "POST",
           mode: "cors",
-          credentials: "include"
+          credentials: "include",
+          withCredentials: true,
+          headers: {
+            Cookie: req?.headers?.cookie
+          }
         }
       );
 
       returnData = await fetchInside(baseURL, {
         endpoint,
         method,
-        headers,
+        credentials: "include",
+        withCredentials: true,
+        headers: {
+          Cookie: req?.headers?.cookie
+        },
         data,
-        pageType
+        pageType,
+        req
       });
     } catch (err) {
       console.error(err);
@@ -133,7 +155,6 @@ const fetchWrapper = async (endpoint, {
 export const fetchPage = async (pageType) => {
   const pageURL = `${baseURL}/api/v2/pages/?type=${pageType}&fields=*`;
   return await fetch(pageURL, {
-    credentials: "include",
     mode: "cors"
   });
 }

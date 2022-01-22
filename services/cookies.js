@@ -20,5 +20,6 @@ export const clientCookieDelete = () => {
 
 export const clientCookieSet = (access, refresh, isLoggedIn) => {
   clientCookieDelete();
+
   JSCookie.set("boho-cookie", JSON.stringify({ access, isLoggedIn, refresh }));
 };
